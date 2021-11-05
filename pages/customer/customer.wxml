@@ -1,0 +1,6 @@
+<!--customer.wxml-->
+<scroll-view class="content flex">
+  <text> 这里是顾客界面</text>
+  
+
+</scroll-view>
