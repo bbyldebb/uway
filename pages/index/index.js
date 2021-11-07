@@ -10,12 +10,22 @@ Page({
           this.address = res[1].data.data.address
           console.log(this.address)
         },
-        fail(error) {}
+        fail(error) { }
       })
   },
   toCustomer() {
     wx.navigateTo({
       url: '/pages/customer/customer',
+    })
+  },
+  toCook() {
+    wx.navigateTo({
+      url: '/pages/cook/cook',
+    })
+  },
+  toManager() {
+    wx.navigateTo({
+      url: '/pages/manager/manager',
     })
   }
 })

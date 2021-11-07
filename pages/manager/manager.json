@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "经理",
+  "usingComponents": {
+    "mp-icon": "weui-miniprogram/icon/icon",
+    "i-icon": "../../dist/icon/index"
+  },
+  "pageOrientation": "landscape"
+}
