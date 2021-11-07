@@ -17,5 +17,15 @@ Page({
     wx.navigateTo({
       url: '/pages/customer/customer',
     })
+  },
+  toWaiter() {
+    wx.navigateTo({
+      url: '/pages/waiter2/waiter',
+    })
+  },
+  toBusboy() {
+    wx.navigateTo({
+      url: '/pages/busboy/busboy',
+    })
   }
 })
