@@ -1,6 +1,41 @@
-<!--customer.wxml-->
+<!-- customer.wxml -->
 <scroll-view class="content flex">
-  <text> 这里是顾客界面</text>
-  
-
+  <view class="searchbar flex">
+    <input placeholder="请输入菜品名"></input>
+    <button hover-class="none" size="mini" border-radius:15rpx>搜索</button>
+  </view>
+  <view class="flex main-axis-around switchBar">
+    <view>菜单</view>
+    <view>评价</view>
+    <view>商家</view>
+    <view>搜索结果</view>
+    <mp-icon icon="bellring-on" size="25" color="rgb(0,128,0)" bindtap="callWaiter"></mp-icon>
+  </view>
+  <swiper>
+    <swiper-item class="flex cross-axis-start">
+      <scroll-view scroll-y class="menuClass">
+        <view class="menuClassItem flex" wx:for="{{menuClass}}">{{item.className}}</view>
+      </scroll-view>
+      <scroll-view scroll-y class="menuDetail">
+        <view class="flex menuDetailItem" wx:for="{{menuDetail}}" bindtap="showDetail" data-index="{{index}}">
+          <image src="{{item.dishImg}}" />
+          <view class="dishDsc">
+            <view style="font-weight: 900;font-size: 35rpx;min-height: 30%;">
+              {{item.dishName}}
+            </view>
+            <view style="min-height: 30%; color: rgb(	105,105,105);">{{item.dishInfo}}</view>
+            <view class="dscBottom flex main-axis-between">
+              <view style="color: rgb(255,0,0,0.6);font-weight: 900;font-size: 35rpx;">
+                ￥{{item.dishPrice}}
+              </view>
+              <mp-icon icon="add2" size="25" color="rgb(255,165,0,0.6)" style="margin-right: 20rpx;"></mp-icon>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>这里是还在建设中的评价界面</swiper-item>
+    <swiper-item>这里是还在建设中的商家信息界面</swiper-item>
+    <swiper-item>这里是还在建设中的搜索结果界面</swiper-item>
+  </swiper>
 </scroll-view>

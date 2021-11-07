@@ -1,7 +1,6 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class="content flex flex-col main-axis-center">
   <text>首页</text>
-
   <view>
     <button bindtap="toCustomer">customer</button>
     <button bindtap="toCook">cook</button>
