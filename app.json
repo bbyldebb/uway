@@ -4,7 +4,9 @@
     "pages/index/index",
     "pages/busboy/busboy",
     "pages/customer/customer",
-     "pages/waiter2/waiter"
+    "pages/waiter2/waiter"
+    "pages/manager/manager",
+    "pages/cook/cook"
   ],
   "window": {
     "backgroundTextStyle": "light",

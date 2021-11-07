@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "厨师",
+  "usingComponents": {
+    "mp-navigation-bar": "../../miniprogram_npm/weui-miniprogram/navigation-bar/navigation-bar",
+    "mp-tabbar": "../../miniprogram_npm/weui-miniprogram/tabbar/tabbar"
+  },
+  "pageOrientation": "landscape"
+}

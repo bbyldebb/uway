@@ -10,7 +10,7 @@ Page({
           this.address = res[1].data.data.address
           console.log(this.address)
         },
-        fail(error) {}
+        fail(error) { }
       })
   },
   toCustomer() {
@@ -26,6 +26,16 @@ Page({
   toBusboy() {
     wx.navigateTo({
       url: '/pages/busboy/busboy',
+    })
+  },
+  toCook() {
+    wx.navigateTo({
+      url: '/pages/cook/cook',
+    })
+  },
+  toManager() {
+    wx.navigateTo({
+      url: '/pages/manager/manager',
     })
   }
 })

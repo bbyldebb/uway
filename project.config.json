@@ -59,20 +59,37 @@
     "search": {
       "list": []
     },
-    "conversation": {
-      "list": []
+    "compileType": "miniprogram",
+    "libVersion": "2.20.1",
+    "appid": "wxe9c59cd55f95d399",
+    "projectname": "UWay",
+    "debugOptions": {
+      "hidedInDevtools": []
     },
-    "game": {
-      "list": []
+    "scripts": {},
+    "staticServerOptions": {
+      "baseURL": "",
+      "servePath": ""
     },
-    "plugin": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
-    "miniprogram": {
-      "list": []
+    "isGameTourist": false,
+    "condition": {
+      "search": {
+        "list": []
+      },
+      "conversation": {
+        "list": []
+      },
+      "game": {
+        "list": []
+      },
+      "plugin": {
+        "list": []
+      },
+      "gamePlugin": {
+        "list": []
+      },
+      "miniprogram": {
+        "list": []
+      }
     }
   }
-}

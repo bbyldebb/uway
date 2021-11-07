@@ -1,0 +1,98 @@
+page {
+  height: 100%;
+  background: linear-gradient(to right, white 0%, white 50%, #dfecd5 50%, #dfecd5 100%)
+    /* background:white */
+
+}
+
+.box {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-top: 0px;
+  border-bottom: 0px;
+}
+
+.middle {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 0px;
+
+}
+
+.right {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-color: white;
+  border-style: solid;
+  border-right-color: rgb(14, 11, 11);
+}
+
+.dish_list {
+  display: flex;
+  width: 100%;
+  box-shadow: gray 0px 0px 10px;
+  margin: 15px;
+  margin-right: 0;
+}
+
+.dish_message {
+  display: flex;
+  /* margin: 10px; */
+  flex-wrap: wrap;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  /* background: rgba(224,227,231,0.5); */
+  background: white;
+  width: 61.8%;
+}
+
+.takeit_message {
+  background: #bbb5ac;
+}
+
+.dish_detail {
+  width: 100%;
+  display: flex;
+  height: 50px;
+  line-height: 50px;
+  flex-direction: column;
+}
+
+.nav {
+  height: 50px;
+  border-bottom: 1px solid #f2e6ce;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  justify-content: center;
+  line-height: 50px;
+  background-color: #f2e6ce;
+  /* #f3edda */
+  font-size: 20px;
+}
+
+.takeitbtn {
+  display: inline-block;
+  border-radius: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  background-color: #f8b37f;
+}
