@@ -1,0 +1,133 @@
+<!-- customer.wxml -->
+<view class="content">
+    <view class="box2_">
+        <view class="box2_view">
+            <button bindtap="onChangeShowState" data-item="1" class="table" wx:if="{{info[1].judge}}" style="background-color: #C25939">
+                1号桌
+            </button>
+            <button bindtap="onChangeShowState" data-item="1" class="table" wx:if="{{!info[1].judge}}" style="background-color: #CF9B69">
+                1号桌
+            </button>
+            <view class="table_action">
+                <view wx:if="{{id==1&&info[1].show_condition&&info[1].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫</button>
+                </view>
+                <view wx:if="{{id==1&&info[1].show_condition&&!info[1].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫完毕</button>
+                </view>
+            </view>
+        </view>
+        <view class="box2_view">
+            <button bindtap="onChangeShowState" data-item="2" class="table" wx:if="{{info[2].judge}}" style="background-color: #C25939">
+                2号桌
+            </button>
+            <button bindtap="onChangeShowState" data-item="2" class="table" wx:if="{{!info[2].judge}}" style="background-color: #CF9B69">
+                2号桌
+            </button>
+            <view class="table_action">
+                <view wx:if="{{id==2&&info[2].show_condition&&info[2].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫</button>
+                </view>
+                <view wx:if="{{id==2&&info[2].show_condition&&!info[2].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫完毕</button>
+                </view>
+            </view>
+        </view>
+        <view class="box2_view">
+            <button bindtap="onChangeShowState" data-item="3" class="table" wx:if="{{info[3].judge}}" style="background-color: #C25939">
+                3号桌
+            </button>
+            <button bindtap="onChangeShowState" data-item="3" class="table" wx:if="{{!info[3].judge}}" style="background-color: #CF9B69">
+                3号桌
+            </button>
+            <view class="table_action">
+                <view wx:if="{{id==3&&info[3].show_condition&&info[3].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫</button>
+                </view>
+                <view wx:if="{{id==3&&info[3].show_condition&&!info[3].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫完毕</button>
+                </view>
+            </view>
+        </view>
+        <view class="box2_view">
+            <button bindtap="onChangeShowState" data-item="4" class="table" wx:if="{{info[4].judge}}" style="background-color: #C25939">
+                4号桌
+            </button>
+            <button bindtap="onChangeShowState" data-item="4" class="table" wx:if="{{!info[4].judge}}" style="background-color: #CF9B69">
+                4号桌
+            </button>
+            <view class="table_action">
+                <view wx:if="{{id==4&&info[4].show_condition&&info[4].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫</button>
+                </view>
+                <view wx:if="{{id==4&&info[4].show_condition&&!info[4].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫完毕</button>
+                </view>
+            </view>
+        </view>
+        <view class="box2_view">
+            <button bindtap="onChangeShowState" data-item="5" class="table" wx:if="{{info[5].judge}}" style="background-color: #C25939">
+                5号桌
+            </button>
+            <button bindtap="onChangeShowState" data-item="5" class="table" wx:if="{{!info[5].judge}}" style="background-color: #CF9B69">
+                5号桌
+            </button>
+            <view class="table_action">
+                <view wx:if="{{id==5&&info[5].show_condition&&info[5].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫</button>
+                </view>
+                <view wx:if="{{id==5&&info[5].show_condition&&!info[5].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫完毕</button>
+                </view>
+            </view>
+        </view>
+        <view class="box2_view">
+            <button bindtap="onChangeShowState" data-item="6" class="table" wx:if="{{info[6].judge}}" style="background-color: #C25939">
+                6号桌
+            </button>
+            <button bindtap="onChangeShowState" data-item="6" class="table" wx:if="{{!info[6].judge}}" style="background-color: #CF9B69">
+                6号桌
+            </button>
+            <view class="table_action">
+                <view wx:if="{{id==6&&info[6].show_condition&&info[6].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫</button>
+                </view>
+                <view wx:if="{{id==6&&info[6].show_condition&&!info[6].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫完毕</button>
+                </view>
+            </view>
+        </view>
+        <view class="box2_view">
+            <button bindtap="onChangeShowState" data-item="7" class="table" wx:if="{{info[7].judge}}" style="background-color: #C25939">
+                7号桌
+            </button>
+            <button bindtap="onChangeShowState" data-item="7" class="table" wx:if="{{!info[7].judge}}" style="background-color: #CF9B69">
+                7号桌
+            </button>
+            <view class="table_action">
+                <view wx:if="{{id==7&&info[7].show_condition&&info[7].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫</button>
+                </view>
+                <view wx:if="{{id==7&&info[7].show_condition&&!info[7].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫完毕</button>
+                </view>
+            </view>
+        </view>
+        <view class="box2_view">
+            <button bindtap="onChangeShowState" data-item="8" class="table" wx:if="{{info[8].judge}}" style="background-color: #C25939">
+                8号桌
+            </button>
+            <button bindtap="onChangeShowState" data-item="8" class="table" wx:if="{{!info[8].judge}}" style="background-color: #CF9B69">
+                8号桌
+            </button>
+            <view class="table_action">
+                <view wx:if="{{id==8&&info[8].show_condition&&info[8].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫</button>
+                </view>
+                <view wx:if="{{id==8&&info[8].show_condition&&!info[8].available}}">
+                    <button bindtap="onChangeAvailable" class="hook">清扫完毕</button>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
