@@ -1,1 +1,66 @@
 /* customer.wxss */
+
+.searchbar {
+  height: 7vh;
+  background-color: rgb(192, 192, 192, 0.2);
+  margin: auto;
+}
+
+.searchbar input {
+  height: 80%;
+  width: 80%;
+  margin-left: 15rpx;
+}
+
+.searchbar button {
+  height: 60%;
+  border-radius: 50rpx;
+  font-weight: initial;
+  font-size: 15rpx;
+  color: white;
+  background-color: #C09664;
+}
+
+.switchBar {
+  height: 6vh;
+}
+
+swiper {
+  height: 87vh;
+}
+
+.menuClass {
+  width: 22%;
+  height: 100%;
+}
+
+.menuClassItem {
+  height: 15%;
+  border-radius: 3rpx;
+  margin-left: 10rpx;
+  background-color: rgb(192, 192, 192, 0.1);
+  color: rgb(105, 105, 105);
+}
+
+.menuDetail {
+  width: 78%;
+  height: 100%;
+}
+
+.menuDetailItem {
+  height: 22%;
+}
+
+.menuDetailItem image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-left: 15rpx;
+  margin-right: 10rpx;
+  border-radius: 10rpx;
+}
+
+.dishDsc {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+}
