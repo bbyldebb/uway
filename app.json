@@ -1,14 +1,14 @@
 {
-  "pages":[
+  "pages": [
+    "pages/waiter/waiter",
     "pages/index/index",
     "pages/customer/customer"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "UWAY有味",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
