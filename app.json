@@ -1,8 +1,11 @@
 {
   "pages": [
-    "pages/waiter/waiter",
     "pages/index/index",
-    "pages/customer/customer"
+    "pages/busboy/busboy",
+    "pages/customer/customer",
+    "pages/waiter/waiter",
+    "pages/manager/manager",
+    "pages/cook/cook"
   ],
   "window": {
     "backgroundTextStyle": "light",
