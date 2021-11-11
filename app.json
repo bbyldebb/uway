@@ -1,10 +1,9 @@
 {
   "pages": [
-   
     "pages/index/index",
     "pages/busboy/busboy",
     "pages/customer/customer",
-    "pages/waiter2/waiter"
+    "pages/waiter/waiter",
     "pages/manager/manager",
     "pages/cook/cook"
   ],
@@ -14,6 +13,5 @@
     "navigationBarTitleText": "UWAY有味",
     "navigationBarTextStyle": "black"
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
