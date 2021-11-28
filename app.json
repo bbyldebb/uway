@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/busboy/busboy",
+    "pages/index/index",
     "pages/customer/customer",
     "pages/waiter/waiter",
     "pages/manager/manager",

@@ -1,51 +1,43 @@
 {
   "description": "项目配置文件",
-  "cloudfunctionRoot": "backend/",
+  "cloudfunctionRoot": "cloudfunctions/",
   "packOptions": {
     "ignore": []
   },
   "setting": {
+    "bundle": false,
+    "userConfirmedBundleSwitch": false,
     "urlCheck": true,
-    "es6": true,
-    "enhance": true,
-    "postcss": true,
-    "preloadBackgroundData": false,
-    "minified": true,
-    "newFeature": false,
-    "coverView": true,
-    "nodeModules": true,
-    "autoAudits": false,
-    "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
-    "uglifyFileName": false,
-    "checkInvalidKey": true,
-    "checkSiteMap": true,
-    "uploadWithSourceMap": true,
+    "coverView": true,
+    "es6": true,
+    "postcss": true,
     "compileHotReLoad": false,
     "lazyloadPlaceholderEnable": false,
-    "useMultiFrameRuntime": false,
-    "useApiHook": false,
-    "useApiHostProcess": false,
-    "babelSetting": {
-      "ignore": [],
-      "disablePlugins": [],
-      "outputPath": ""
-    },
-    "enableEngineNative": false,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "autoAudits": false,
+    "newFeature": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
     "useIsolateContext": true,
-    "userConfirmedBundleSwitch": false,
+    "nodeModules": false,
+    "enhance": true,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "showShadowRootInWxmlPanel": true,
     "packNpmManually": false,
+    "enableEngineNative": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
-    "disableUseStrict": false,
     "showES6CompileOption": false,
-    "useCompilerPlugins": false,
     "minifyWXML": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.20.1",
+  "libVersion": "2.20.2",
   "appid": "wxe9c59cd55f95d399",
-  "projectname": "UWay",
+  "projectname": "miniprogram-1",
   "debugOptions": {
     "hidedInDevtools": []
   },
@@ -59,37 +51,22 @@
     "search": {
       "list": []
     },
-    "compileType": "miniprogram",
-    "libVersion": "2.20.1",
-    "appid": "wxe9c59cd55f95d399",
-    "projectname": "UWay",
-    "debugOptions": {
-      "hidedInDevtools": []
+    "conversation": {
+      "list": []
     },
-    "scripts": {},
-    "staticServerOptions": {
-      "baseURL": "",
-      "servePath": ""
+    "game": {
+      "list": []
     },
-    "isGameTourist": false,
-    "condition": {
-      "search": {
-        "list": []
-      },
-      "conversation": {
-        "list": []
-      },
-      "game": {
-        "list": []
-      },
-      "plugin": {
-        "list": []
-      },
-      "gamePlugin": {
-        "list": []
-      },
-      "miniprogram": {
-        "list": []
-      }
+    "plugin": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": []
     }
   }
+}
+
+  
