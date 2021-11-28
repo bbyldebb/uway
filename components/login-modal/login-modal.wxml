@@ -1,0 +1,15 @@
+<view class="modal-mask" wx:if="{{show}}">
+    <view class="modal-content">
+        <view class="main-content flex flex-col" style="height:90%;">
+            <view style="margin-top:35rpx; color:green; font-size:30rpx;">每天起床第一句 先给自己打个气\n</view>
+            <view style="font-size:25rpx;">【员工登录】</view>
+            <image src="https://p.qqan.com/up/2020-8/15984089474636304.jpg" />
+            <input class="staffID" value="{{staffID}}" bindinput="inputID" maxlength="7" cursor-spacing="240" placeholder-style="font-size:25rpx;" style="font-size:25rpx;" placeholder="请输入工号" />
+            <input class="pwd" value="{{pwd}}" bindinput="inputPwd" maxlength="7" cursor-spacing="240" placeholder-style="font-size:25rpx;" style="font-size:25rpx;" placeholder="请输入密码" />
+        </view>
+        <view class="modal-footer flex">
+            <view class='cancel-btn' bindtap='cancel'>取消</view>
+            <view class='confirm-btn' bindtap='confirm'>确定</view>
+        </view>
+    </view>
+</view>
