@@ -1,11 +1,14 @@
 <!-- index.wxml -->
 <view class="content flex flex-col main-axis-center">
-  <text>首页</text>
-  <view>
-    <button bindtap="toCustomer">customer</button>
-    <button bindtap="toCook">cook</button>
-    <button bindtap="toManager">manager</button>
-    <button bindtap="toWaiter">waiter</button>
-    <button bindtap="toBusboy">busboy</button>
+  <swiper class="rotation" indicator-dots="true" autoplay="true" interval="3000" duration="700">
+    <swiper-item wx:for="{{imgUrls}}">
+      <image src="{{item}}" style="width:100%; height:100%; object-fit:cover; border-radius:7rpx;" />
+    </swiper-item>
+  </swiper>
+  <text style="margin-top:30rpx; color:green; font-size:45rpx;">一键开启美味之旅·UWay有味</text>
+  <view class="login-choice flex flex-col">
+    <button bindtap="toCustomer" style="margin-top:15%;">我是餐厅的顾客</button>
+    <button bindtap="toStaff" style="margin-top:15%;">我是餐厅的员工</button>
   </view>
+  <modalView show="{{showModal}}"></modalView>
 </view>
