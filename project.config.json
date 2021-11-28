@@ -1,38 +1,46 @@
 {
-  "description": "项目配置文件",
-  "cloudfunctionRoot": "cloudfunctions/",
-  "packOptions": {
-    "ignore": []
-  },
-  "setting": {
-    "bundle": false,
-    "userConfirmedBundleSwitch": false,
-    "urlCheck": true,
-    "scopeDataCheck": false,
-    "coverView": true,
-    "es6": true,
-    "postcss": true,
-    "compileHotReLoad": false,
-    "lazyloadPlaceholderEnable": false,
-    "preloadBackgroundData": false,
-    "minified": true,
-    "autoAudits": false,
-    "newFeature": false,
-    "uglifyFileName": false,
-    "uploadWithSourceMap": true,
-    "useIsolateContext": true,
-    "nodeModules": false,
-    "enhance": true,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": true,
-    "showShadowRootInWxmlPanel": true,
-    "packNpmManually": false,
-    "enableEngineNative": false,
-    "packNpmRelationList": [],
-    "minifyWXSS": true,
-    "showES6CompileOption": false,
-    "minifyWXML": true
+    "cloudfunctionRoot": "backend/",
+    "description": "项目配置文件",
+    "packOptions": {
+        "ignore": []
+    },
+    "setting": {
+        "urlCheck": true,
+        "es6": true,
+        "enhance": true,
+        "postcss": true,
+        "preloadBackgroundData": false,
+        "minified": true,
+        "newFeature": false,
+        "coverView": true,
+        "nodeModules": true,
+        "autoAudits": false,
+        "showShadowRootInWxmlPanel": true,
+        "scopeDataCheck": false,
+        "uglifyFileName": false,
+        "checkInvalidKey": true,
+        "checkSiteMap": true,
+        "uploadWithSourceMap": true,
+        "compileHotReLoad": false,
+        "lazyloadPlaceholderEnable": false,
+        "useMultiFrameRuntime": true,
+        "useApiHook": true,
+        "useApiHostProcess": true,
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        },
+        "enableEngineNative": false,
+        "useIsolateContext": true,
+        "userConfirmedBundleSwitch": false,
+        "packNpmManually": false,
+        "packNpmRelationList": [],
+        "minifyWXSS": true,
+        "disableUseStrict": false,
+        "minifyWXML": true,
+        "showES6CompileOption": false,
+        "useCompilerPlugins": false
   },
   "compileType": "miniprogram",
   "libVersion": "2.20.2",
@@ -47,26 +55,62 @@
     "servePath": ""
   },
   "isGameTourist": false,
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
       "list": []
     },
-    "conversation": {
-      "list": []
+    "compileType": "miniprogram",
+    "libVersion": "2.20.1",
+    "appid": "wxe9c59cd55f95d399",
+    "projectname": "UWay",
+    "debugOptions": {
+        "hidedInDevtools": []
     },
-    "game": {
-      "list": []
+    "scripts": {},
+    "staticServerOptions": {
+        "baseURL": "",
+        "servePath": ""
     },
-    "plugin": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
-    "miniprogram": {
-      "list": []
+    "isGameTourist": false,
+    "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+    "condition": {
+        "search": {
+            "list": []
+        },
+        "compileType": "miniprogram",
+        "libVersion": "2.20.1",
+        "appid": "wxe9c59cd55f95d399",
+        "projectname": "UWay",
+        "debugOptions": {
+            "hidedInDevtools": []
+        },
+        "scripts": {},
+        "staticServerOptions": {
+            "baseURL": "",
+            "servePath": ""
+        },
+        "isGameTourist": false,
+        "condition": {
+            "search": {
+                "list": []
+            },
+            "conversation": {
+                "list": []
+            },
+            "game": {
+                "list": []
+            },
+            "plugin": {
+                "list": []
+            },
+            "gamePlugin": {
+                "list": []
+            },
+            "miniprogram": {
+                "list": []
+            }
+        }
     }
   }
 }
-
-  
