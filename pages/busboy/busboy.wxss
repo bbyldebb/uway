@@ -1,0 +1,69 @@
+
+
+.content {
+    display: flex;
+    height: 100vh;
+    align-items: flex-start;
+    box-sizing: border-box;
+    flex-direction: row;
+    margin: 5px;
+}
+
+
+.rightInfo {
+    border-radius: 5%;
+    text-align: center;
+    height: 100%;
+    /*文字居中*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /*分开*/
+    /* align-items: flex-end; */
+    width: 100%;
+    background-color: #FFFAF0;
+}
+
+.box2_view {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.table {
+    width: 65%;
+    height: 50%;
+    border-radius: 17%;
+    /*圆角*/
+    line-height: 120px;
+    min-height: 120px;
+    margin: 5rpx;
+    /* min-width: 100px;  */
+    /* margin: 10px; */
+}
+
+.table_action {
+    width: 35%;
+    /* 调整按钮位置 */
+    height: 75%;
+    display: flex;
+    margin-right: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    /* justify-content:space-around;
+    align-items: ; */
+}
+
+.btn {
+    border-radius: 10rpx;
+    /*圆角*/
+    /* 最小了，不能再小了 */
+    /* width: 63rpx; */
+    width: 100%;
+    /* height: 30rpx; */
+    background-color: #BDC8BE;
+    line-height: 30px;
+    margin-bottom: 2rpx;
+    min-width: 40rpx;
+}

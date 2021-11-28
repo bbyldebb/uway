@@ -1,1 +1,14 @@
 /* index.wxss */
+.rotation {
+    width: 95vw;
+    height: 28vh;
+    margin-top: 20rpx;
+}
+
+.login-choice {
+    margin-top: 50rpx;
+    width: 95vw;
+    height: 45vh;
+    background-color: rgba(169, 166, 171, 0.2);
+    border-radius: 7rpx;
+}
