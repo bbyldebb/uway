@@ -41,24 +41,6 @@
         "minifyWXML": true,
         "showES6CompileOption": false,
         "useCompilerPlugins": false
-  },
-  "compileType": "miniprogram",
-  "libVersion": "2.20.2",
-  "appid": "wxe9c59cd55f95d399",
-  "projectname": "miniprogram-1",
-  "debugOptions": {
-    "hidedInDevtools": []
-  },
-  "scripts": {},
-  "staticServerOptions": {
-    "baseURL": "",
-    "servePath": ""
-  },
-  "isGameTourist": false,
-  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
-  "condition": {
-    "search": {
-      "list": []
     },
     "compileType": "miniprogram",
     "libVersion": "2.20.1",
@@ -112,5 +94,4 @@
             }
         }
     }
-  }
 }

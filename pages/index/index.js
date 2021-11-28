@@ -14,14 +14,15 @@ Page({
           resolve(res)
         }
       })
-    }),
+    })
     var p2 = new Promise((resolve, reject) => {
       wx.getUserProfile({
         desc: '用于完善会员资料',
         success: res => {
           resolve(res)
         }
-    }),
+      })
+    })
     // 同时执行p1和p2，并在它们都完成后执行then
     Promise.all([p1, p2]).then((results) => {
       // results是一个长度为2的数组，放置着p1、p2的resolve
@@ -48,5 +49,4 @@ Page({
       showModal: true
     });
   }
-
 })
