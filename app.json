@@ -1,12 +1,11 @@
 {
   "pages": [
-    "pages/cook/cook",
-    "pages/cloudfunctiontest/cloudfunctiontest",
     "pages/index/index",
     "pages/busboy/busboy",
     "pages/customer/customer",
     "pages/waiter/waiter",
-    "pages/manager/manager"
+    "pages/manager/manager",
+    "pages/cook/cook"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -41,6 +41,24 @@
         "minifyWXML": true,
         "showES6CompileOption": false,
         "useCompilerPlugins": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.20.1",
+  "appid": "wxe9c59cd55f95d399",
+  "projectname": "UWay",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "scripts": {},
+  "staticServerOptions": {
+    "baseURL": "",
+    "servePath": ""
+  },
+  "isGameTourist": false,
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+  "condition": {
+    "search": {
+      "list": []
     },
     "compileType": "miniprogram",
     "libVersion": "2.20.1",
@@ -94,4 +112,5 @@
             }
         }
     }
+  }
 }
