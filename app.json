@@ -1,12 +1,12 @@
 {
   "pages": [
-   
+    "pages/cook/cook",
+    "pages/cloudfunctiontest/cloudfunctiontest",
     "pages/index/index",
     "pages/busboy/busboy",
     "pages/customer/customer",
-    "pages/waiter2/waiter"
-    "pages/manager/manager",
-    "pages/cook/cook"
+    "pages/waiter/waiter",
+    "pages/manager/manager"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -14,6 +14,11 @@
     "navigationBarTitleText": "UWAY有味",
     "navigationBarTextStyle": "black"
   },
-  "style": "v2",
+  "plugins": {
+    "WechatSI": {
+      "version": "0.3.5",
+      "provider": "wx069ba97219f66d99"
+    }
+  },
   "sitemapLocation": "sitemap.json"
 }

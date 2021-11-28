@@ -20,7 +20,7 @@ Page({
   },
   toWaiter() {
     wx.navigateTo({
-      url: '/pages/waiter2/waiter',
+      url: '/pages/waiter/waiter',
     })
   },
   toBusboy() {
@@ -38,4 +38,5 @@ Page({
       url: '/pages/manager/manager',
     })
   }
+
 })

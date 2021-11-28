@@ -2,30 +2,34 @@
 <!-- 分栏效果 -->
 <view class="box">
     <view class="left">
-        <view class="nav">待接单</view>
-        <scroll-view class="scroll" scroll-y>
-            <view class="dish_list" wx:for="{{dish_message}}" wx:key="*this" wx:if="{{item.status==0}}">
-                <view class="dish_message">
+        <view class="nav" style="font-size: 20rpx; background-color:rgba(255, 251, 240,1)">
+            待接单
+        </view>
+        <scroll-view class="scroll" style="height: 90%;" scroll-y>
+            <view class="dish_list" wx:for="{{dish_message}}" wx:key="_id" wx:if="{{item.state=='2'}}">
+                <view class="dish_message" bindtap="readText" data-name="{{item.name}}" data-ds="{{item.description}}">
                     <text class="dish_detail">菜品名称：{{item.name}}</text>
-                    <text class="dish_detail">备注：{{item.ps}}</text>
-                    <text class="dish_detail">下单时间:{{item.time}}</text>
+                    <text class="dish_detail">备注：{{item.description}}</text>
+                    <text class="dish_detail">下单时间:{{item.orderTime}}</text>
                     <!-- <button class="takeitbtn" bindtap="changestatus">接单</button> -->
                 </view>
-                <button class="takeitbtn" style="width:38.2%;" data-index="{{index}}" bindtap="takeit">
+                <button class="takeitbtn" style="width:38.2%;" data-index="{{index}}" bindtap="takeit" data-id="{{item._id}}">
                     接单
                 </button>
             </view>
         </scroll-view>
     </view>
     <view class="middle">
-        <view class="nav" style="background-color:#f3edda ">已接单</view>
-        <scroll-view class="scroll" scroll-y>
-            <view class="dish_list" wx:for="{{dish_message}}" wx:key="*this" wx:if="{{item.status==1}}">
-                <view class="dish_message takeit_message" style="width:100%">
+        <view class="nav" style="background-color:rgba(65,174,60,1); color:white; font-size: 20rpx;">
+            已接单
+        </view>
+        <scroll-view class="scroll" style="height: 90%;" scroll-y>
+            <view class="dish_list" wx:for="{{dish_message}}" wx:key="_id" wx:if="{{item.state=='3'}}">
+                <view class="dish_message takeit_message" style="width:100%" bindtap="readText" data-name="{{item.name}}" data-ds="{{item.description}}">
                     <text class="dish_detail">菜品名称：{{item.name}}</text>
-                    <text class="dish_detail">备注：{{item.ps}}</text>
-                    <text class="dish_detail" style="width:70%">下单时间:{{item.time}}</text>
-                    <checkbox style="text-align: right;" bindtap="doneit" data-index="{{index}}">
+                    <text class="dish_detail">备注：{{item.description}}</text>
+                    <text class="dish_detail" style="width:70%">下单时间:{{item.orderTime}}</text>
+                    <checkbox style="text-align: right;" bindtap="doneit" data-index="{{index}}" data-id="{{item._id}}">
                         已做完
                     </checkbox>
                 </view>
