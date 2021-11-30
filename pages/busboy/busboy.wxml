@@ -1,0 +1,22 @@
+
+
+<view class="content">
+
+    <view class="rightInfo">
+        <!-- 让info从第二个开始遍历 -->
+        <view class="box2_view" wx:if="{{i>0}}" wx:for-index="i" wx:for="{{info}}" wx:key="*this">
+            <button bindtap="onChangeShowState" data-item="{{item.id}}" class="table"  style="{{info[item.id].bkcolor}}">
+                {{item.id}}号桌
+            </button>
+            <view class="table_action">
+                <view wx:if="{{id==item.id&&info[item.id].show_condition&&info[item.id].available}}">
+                    <button bindtap="onChangeAvailable" class="btn">清扫</button>
+                </view>
+                <view wx:if="{{id==item.id&&info[item.id].show_condition&&!info[item.id].available}}">
+                    <button bindtap="onChangeAvailable" class="btn">清扫完毕</button>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
