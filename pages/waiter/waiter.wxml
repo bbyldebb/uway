@@ -20,9 +20,9 @@
                 <view wx:if="{{CookNum>0}}" class="CookNumber">{{CookNum}}</view>
             </view>
             <scroll-view scroll-y style="height: 85%">
-                <view class="box1_info2" wx:for="{{cook_mess}}" wx:key="*this">
-                    <view hidden="{{info[item.id].cook_hide}}" data-item="{{item.id}}" bindtap="cookMesgHidden" class="info1">
-                        {{item.id}}号桌的菜好啦！
+                <view class="box1_info2" wx:if="{{i>0}}" wx:for-index="i" wx:for="{{mysql}}" wx:key="_id">
+                    <view hidden="{{info[item.ID].cook_hide}}" data-item="{{item.ID}}" bindtap="cookMesgHidden" class="info1">
+                        {{item.ID}}号桌的菜好啦！
                     </view>
                 </view>
             </scroll-view>
