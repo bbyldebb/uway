@@ -29,6 +29,7 @@ Page(
                     id: 8
                 },
                 {
+
                     id: 9
                 },
 
@@ -208,15 +209,6 @@ Page(
                 }
             }
 
-            // for (var o in this.data.temp) {
-            //     console.log('qweqewq')
-            //     var i = this.data.temp[o].referOrder
-            //     console.log(i)
-
-            //     // console.log(this.data.table_id)
-            // }
-
-
         },
 
         //监听table变化
@@ -227,7 +219,7 @@ Page(
                 onChange: snapshot => {
                     // console.log(snapshot.docs)
                     that.setData({
-                        mysql: snapshot.docs
+                        mysql: snapshot.docs,
                     })
                     that.refresh_right()//初始化info数组
 
@@ -242,6 +234,7 @@ Page(
         //更新
         refresh_right: function () {
             var len = this.data.mysql.length
+            // console.log(len)
             var that = this
             for (var o in this.data.mysql) {
                 if (that.data.mysql[o].state == '')
@@ -261,6 +254,7 @@ Page(
             this.setData(
                 {
                     info: that.data.info,
+                    length: len
                 }
             )
         },
@@ -296,6 +290,12 @@ Page(
                     CookNum: that.data.CookNum - 1,
                 }
             )
+            var title = '请尽快给' + dataid + '号桌上菜!'
+            wx.showToast({
+                title: title,
+                icon: 'none',
+                duration: 1800
+            })
 
             var temp = await db.collection('table').where({
                 ID: dataid
@@ -310,23 +310,7 @@ Page(
             }).then(async res => {
                 console.log('云函数读取orderItem数据成功', res.result.list)
 
-                // for(var i in res.result.list){
-                // var order = res.result.list[i].referOrder
-                // console.log(order)
-                // wx.cloud.callFunction({
-                //     name: 'UpdateOrderItem',
-                //     data: {
-                //         referorder: order,
-                //     }
-                // }).then(res => {
-                //     console.log('云函数更新数据成功', res.result.data)
-                // })
-                //     .catch(res => {
-                //         console.log('云函数更新数据失败', res)
-                //     })
-
-                //  }
-                for (var i in res.result.list) {
+                // for (var i in res.result.list) {
                     var order = res.result.list[0].referOrder
                     console.log(order)
                     await wx.cloud.callFunction({
@@ -341,7 +325,8 @@ Page(
                             console.log('云函数更新数据失败', res)
                         })
 
-                }
+                // }
+                
 
             })
                 .catch(res => {
@@ -369,15 +354,26 @@ Page(
         },
 
         onChangeAvailable: function (e) {
+            wx.showLoading({
+                title: '加载中...'
+            })
             var temp = this.data.id;
             var that = this;
             // var up = "info[" + temp + "].judge";
             var dataid = e.currentTarget.dataset.item;
+            var title = "";
             console.log(dataid)
-            if (dataid == '1')
+            if (dataid == '1') {
                 dataid = '2'
-            else if (dataid == '2')
+                title = "绑定成功!"
+            }
+
+
+            else if (dataid == '2') {
                 dataid = '3'
+                title = "解绑成功!"
+            }
+
             wx.cloud.callFunction({
                 name: 'SetTable',
                 data: {
@@ -385,7 +381,13 @@ Page(
                     state: dataid
                 }
             }).then(res => {
+                wx.hideLoading();
                 console.log('云函数更新数据成功', res.result.data)
+                wx.showToast({
+                    title: title,
+                    icon: 'success',
+                    duration: 1500
+                })
             })
                 .catch(res => {
                     console.log('云函数更新数据失败', res)
@@ -407,5 +409,53 @@ Page(
             )
 
         },
+        SetTable: function (e) {
+            var that = this
+            wx.showModal({
+                title: '添加桌子',
+                content: '确定增加一张桌子？',
+                showCancel: true,//是否显示取消按钮      
+                cancelText: "取消",//默认是“取消”      
+                cancelColor: '#DEB887',//取消文字的颜色      
+                confirmText: "确定",//默认是“确定”      
+                confirmColor: '#DEB887',//确定文字的颜色      
+                success: function (res) {
+                    if (res.cancel) {
+                        //点击取消,默认隐藏弹框        
+                    } else {
+                        wx.showLoading({
+                            title: '添加中...'
+                        })
+                        //点击确定          
+                        wx.cloud.callFunction({
+                            name: 'AddTable',
+                            data: {
+                                id: that.data.length,
+                            }
+                        }).then(res => {
+                            wx.hideLoading();
+                            wx.showToast({
+                                title: "添加成功!",
+                                icon: 'success',
+                                duration: 1500
+                            })
+                            console.log("成功")
+                        })
+                            .catch(res => {
+                                console.log('云函数更新数据失败', res)
+                            })
 
+                    }
+                },
+                fail: function (res) { },//接口调用失败的回调函数      
+                complete: function (res) {
+                    wx.showToast({
+                        title: "请重试!",
+                        icon: 'none',
+                        duration: 1500
+                    })
+
+                },//接口调用结束的回调函数（调用成功、失败都会执行）   
+            })
+        }
     })
