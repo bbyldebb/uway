@@ -33,194 +33,220 @@ Page(
                 },
 
             ],
-            //厨师上菜功能
-            cook_mess: [
-                {
-                    id: 1
-                }, {
-                    id: 2
-                }, {
-                    id: 3
-                },
-                {
-                    id: 4
-                },
-                {
-                    id: 5
-                },
-                {
-                    id: 6
-                },
-                {
-                    id: 7
-                },
-                {
-                    id: 8
-                },
-                {
-                    id: 9
-                },
-            ],
-
-
             info: [
                 {
+                    // id: 0,
+
+                    show_condition: "",
+                    available: "",
+                    cust_hide: false,
+                    cook_hide: true,
+                },
+                {
+                    // id: 0,
+
+                    show_condition: "",
+                    available: "",
+                    cust_hide: false,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
+
+                    show_condition: "",
+                    available: "",
+                    cust_hide: false,
+                    cook_hide: true,
+                }, {
                     // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
                     cust_hide: false,
-                    cook_hide: false,
-                },
-                {
-                    // id: 1,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
                     cust_hide: false,
-                    cook_hide: false,
-                },
-                {
-                    // id: 2,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
                     cust_hide: false,
-                    cook_hide: false,
-                },
-                {
-                    // id: 3,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
                     cust_hide: false,
-                    cook_hide: false,
-                },
-                {
-                    // id: 4,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
                     cust_hide: false,
-                    cook_hide: false,
-                },
-                {
-                    // id: 5,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
                     cust_hide: false,
-                    cook_hide: false,
-                },
-                {
-                    // id: 6,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
                     cust_hide: false,
-                    cook_hide: false,
-                },
-                {
-                    // id: 6,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
                     cust_hide: false,
-                    cook_hide: false,
-                },
-                {
-                    // id: 6,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
                     cust_hide: false,
-                    cook_hide: false,
-                },
-                {
-                    // id: 6,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
                     cust_hide: false,
-                    cook_hide: false,
-                },
-                {
-                    // id: 6,
-                    // judge: false,
-                    show_condition: "",
-                    available: "",
-                    cust_hide: false,
-                    cook_hide: false,
-                },
-                {
-                    // id: 6,
-                    // judge: false,
-                    show_condition: "",
-                    available: "",
-                    cust_hide: false,
-                    cook_hide: false,
-                },
-                {
-                    // id: 6,
-                    // judge: false,
-                    show_condition: "",
-                    available: "",
-                    cust_hide: false,
-                    cook_hide: false,
-                },
+                    cook_hide: true,
+                }
             ],
 
 
-            CustNum: 9,
-            CookNum: 9,
+            CustNum: 0,
+            CookNum: 0,
             id: 0,
-            // interval: ""
+
         },
 
         async onLoad() {
-            //云函数获取数据
-            // this.setMysql();
-            console.log("设置成功")
-
-            await wx.cloud.callFunction({
-                name: 'GetTable',
-            }).then(res => {
-                console.log('云函数获取orderItem数据成功', res.result.data)
-                this.setData({
-                    mysql: res.result.data,
-
-                })
-            })
-                .catch(res => {
-                    console.log('云函数获取orderItem数据失败', res)
-                })
-            //数据库获取数据
-
-            this.refresh()
-
+            this.WatchTable()
         },
-
         onShow() {
 
-            this.startInto()
+            this.WatchOrder()
+
         },
 
-
-        onHide() {
-            clearInterval(this.data.interval)
+        async WatchOrder() {
+            var that = this
+            const db = wx.cloud.database()
+            const temp = await db.collection('orderItem').where({
+                state: '4'
+            }).watch({
+                onChange: snapshot => {
+                    console.log(snapshot.docs)
+                    that.setData({
+                        temp: snapshot.docs
+                    })
+                    console.log(that.data.temp)
+                    that.RefreshOrder()
+                },
+                onError: function (err) {
+                    console.error("监听失败", err)
+                }
+            })
         },
-        onunload() {
 
-            clearInterval(this.data.interval)
+        async RefreshOrder() {
+            var that = this
+            var CookNum = 0
+            var l = 0;
+            // console.log(that.data.temp.length)
+            run()
+            async function run() {
+                if (l < that.data.temp.length) {
+
+                    var i = that.data.temp[l].referOrder
+                    console.log(i)
+                    await wx.cloud.callFunction({
+                        name: 'WatchTable',
+                        data: {
+                            id: i,
+                        }
+                    }).then(res => {
+                        console.log('云函数读取orderItem数据成功', res.result.list[0])
+                        that.data.info[parseInt(res.result.list[0].ID)].cook_hide = false
+                    })
+                        .catch(res => {
+                            console.log('云函数获取orderItem数据失败', res)
+                        })
+
+                    l++;
+                    run()
+                }
+                else {
+                    for (var j in that.data.info) {
+                        if (that.data.info[j].cook_hide == false)
+                            CookNum++;
+                    }
+                    that.setData(
+                        {
+
+                            info: that.data.info,
+                            CookNum: CookNum
+                        }
+                    )
+
+                }
+            }
+
+            // for (var o in this.data.temp) {
+            //     console.log('qweqewq')
+            //     var i = this.data.temp[o].referOrder
+            //     console.log(i)
+
+            //     // console.log(this.data.table_id)
+            // }
+
+
         },
 
-        refresh: function () {
+        //监听table变化
+        async WatchTable() {
+            var that = this
+            const db = wx.cloud.database()
+            const temp = db.collection('table').watch({
+                onChange: snapshot => {
+                    // console.log(snapshot.docs)
+                    that.setData({
+                        mysql: snapshot.docs
+                    })
+                    that.refresh_right()//初始化info数组
+
+                    // console.log(that.data.mysql)
+                },
+                onError: function (err) {
+                    console.error("监听失败", err)
+                }
+            })
+            // console.log("如那件", that.data.mysql)
+        },
+        //更新
+        refresh_right: function () {
             var len = this.data.mysql.length
             var that = this
             for (var o in this.data.mysql) {
                 if (that.data.mysql[o].state == '')
                     continue;
-                console.log("id+state", that.data.mysql[o].ID, that.data.mysql[o].state)
+                // console.log("id+state", that.data.mysql[o].ID, that.data.mysql[o].state)
                 var id = parseInt(that.data.mysql[o].ID)
                 if (that.data.mysql[o].state == "2") {
                     that.data.info[id].show_condition = false;
@@ -239,55 +265,6 @@ Page(
             )
         },
 
-        async startInto() {
-            var that = this;
-            this.data.interval = setInterval(async function () {
-                // console.log("111111")
-                // console.log(that.data.mysql)
-                // this.refresh()
-                await wx.cloud.callFunction({
-                    name: 'GetTable',
-                }).then(res => {
-                    //                 console.log('云函数获取orderItem数据成功', res.result.data)
-                    that.setData({
-                        mysql: res.result.data,
-                    })
-                })
-                    .catch(res => {
-                        console.log('云函数获取orderItem数据失败', res)
-                    })
-                //数据库获取数据
-                // that.refresh()
-            }, 500);
-
-
-        },
-
-        setMysql: function (e) {
-            console.log("设置成功")
-
-            wx.cloud.callFunction({
-                name: 'GetTable',
-            }).then(res => {
-                console.log('云函数获取orderItem数据成功', res.result.data)
-                this.setData({
-                    mysql: res.result.data,
-
-                })
-
-            })
-                .catch(res => {
-                    console.log('云函数获取orderItem数据失败', res)
-                })
-            //数据库获取数据
-        },
-        // setState: function (e) {
-
-        // },
-
-
-
-
         custMesgHidden: function (e) {
             var dataid = e.currentTarget.dataset.item;
             // console.log(dataid);
@@ -301,20 +278,77 @@ Page(
                 }
             )
 
+
+
+
         },
-        cookMesgHidden: function (e) {
+        async cookMesgHidden(e) {
+            var that = this
             var dataid = e.currentTarget.dataset.item;
-            // console.log(dataid);
-            var that = this;
 
-            that.data.info[dataid].cook_hide = !that.data.info[dataid].cook_hide;
+            var that = this
+            const db = wx.cloud.database()
 
-            this.setData(
+            that.data.info[dataid].cook_hide = true;
+            await this.setData(
                 {
                     info: that.data.info,
                     CookNum: that.data.CookNum - 1,
                 }
             )
+
+            var temp = await db.collection('table').where({
+                ID: dataid
+            }).get()
+            console.log(temp.data[0]._id)
+
+            await wx.cloud.callFunction({
+                name: 'SetOrder',
+                data: {
+                    id: temp.data[0]._id,
+                }
+            }).then(async res => {
+                console.log('云函数读取orderItem数据成功', res.result.list)
+
+                // for(var i in res.result.list){
+                // var order = res.result.list[i].referOrder
+                // console.log(order)
+                // wx.cloud.callFunction({
+                //     name: 'UpdateOrderItem',
+                //     data: {
+                //         referorder: order,
+                //     }
+                // }).then(res => {
+                //     console.log('云函数更新数据成功', res.result.data)
+                // })
+                //     .catch(res => {
+                //         console.log('云函数更新数据失败', res)
+                //     })
+
+                //  }
+                for (var i in res.result.list) {
+                    var order = res.result.list[0].referOrder
+                    console.log(order)
+                    await wx.cloud.callFunction({
+                        name: 'UpdateOrderItem',
+                        data: {
+                            referorder: order,
+                        }
+                    }).then(res => {
+                        console.log('云函数更新数据成功', res.result.data)
+                    })
+                        .catch(res => {
+                            console.log('云函数更新数据失败', res)
+                        })
+
+                }
+
+            })
+                .catch(res => {
+                    console.log('云函数获取orderItem数据失败', res)
+                })
+
+
 
         },
         onChangeShowState: function (e) {
@@ -335,7 +369,6 @@ Page(
         },
 
         onChangeAvailable: function (e) {
-
             var temp = this.data.id;
             var that = this;
             // var up = "info[" + temp + "].judge";
@@ -345,8 +378,6 @@ Page(
                 dataid = '2'
             else if (dataid == '2')
                 dataid = '3'
-
-
             wx.cloud.callFunction({
                 name: 'SetTable',
                 data: {
@@ -354,10 +385,10 @@ Page(
                     state: dataid
                 }
             }).then(res => {
-                console.log('云函数更新orderItem数据成功', res.result.data)
+                console.log('云函数更新数据成功', res.result.data)
             })
                 .catch(res => {
-                    console.log('云函数更新orderItem数据失败', res)
+                    console.log('云函数更新数据失败', res)
                 })
             //数据库获取数据
 
