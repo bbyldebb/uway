@@ -1,6 +1,12 @@
 Page({
   data: {
-    menuClass: [{
+    menuClass:[],
+    /*
+    menuClass: [
+      {
+        className: '全部菜品'
+      },
+      {
         className: '果木熏烤系列'
       },
       {
@@ -24,7 +30,10 @@ Page({
       {
         className: '暖冬热饮'
       }
-    ],
+    ],*/
+    menuDetail:[],
+
+/*
     menuDetail: [{
         dishName: '一斤酱骨头加配菜',
         dishPrice: '30',
@@ -35,7 +44,7 @@ Page({
         dishName: '烤鱼',
         dishPrice: '30',
         dishInfo: '这里是菜品描述菜品菜品...',
-        dishImg: 'https://tu1.whhost.net/uploads/201908/1536036528-JELPHgrRwm.jpg'
+        
       },
       {
         dishName: '土豆鸡块',
@@ -61,32 +70,102 @@ Page({
         dishInfo: '这里是菜品描述菜品菜品...',
         dishImg: 'https://img.zcool.cn/community/01d0875cad95c9a801208f8bee9463.jpg@1280w_1l_2o_100sh.jpg'
       }
-    ]
-
+    ]*/
+    curnav: '全部菜品',
+    cuvindex: 0
   },
+
+
+
+  onLoad() {
+    var that = this
+    const db = wx.cloud.database()
+    const _ = db.command
+    const $ = db.command.aggregate
+    //云函数获取数据
+    wx.cloud.callFunction({
+        name: 'getdish',
+    }).then(res => {
+        console.log('云函数获取dish数据成功', res.result)
+        this.setData({
+          menuDetail: res.result.data,
+          curindex :0,
+          curnav:"全部菜品"
+      })
+        let dishclass = new Set(); 
+        dishclass.add("全部菜品")
+        for(var i = 0;i<res.result.data.length;i++){
+          console.log(that.data.menuDetail[i]);
+           dishclass.add(that.data.menuDetail[i].class)
+        }
+       
+        dishclass = Array.from(dishclass)
+        dishclass = {...dishclass}
+        this.setData({
+          menuClass:dishclass,
+      })
+      console.log(that.data.menuClass)
+        
+    })
+        .catch(res => {
+            console.log('云函数获取orderItem数据成功', res)
+        })
+    
+    },
+    showExplicit(e){
+      var i = e.currentTarget.dataset.name;
+      if(i=='全部菜品'){
+        this.setData({
+          curindex: 0
+       })
+      }else{
+      this.setData({
+       curnav: i,
+       curindex:1
+
+    })
+  }
+      console.log(this.data.curnav)
+    },
   showDetail(e) {
     var i = e.currentTarget.dataset.index;
     wx.showModal({
-      title: this.data.menuDetail[i].dishName,
-      content: this.data.menuDetail[i].dishInfo,
-      Image: this.data.menuDetail[i].dishImg,
+      title: this.data.menuDetail[i].name,
+      content: this.data.menuDetail[i].description,
+      //Image: this.data.menuDetail[i].dishImg,
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
-        } else if (res.cancel) {
+        }
+          else if (res.cancel) {
           console.log('用户点击取消')
         }
       }
     })
   },
   callWaiter() {
+    var that = this
+    const db = wx.cloud.database()
+    const _ = db.command
+    const $ = db.command.aggregate
     wx.showModal({
       title: '顾客您好',
       content: '是否需要呼叫服务员',
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
-        } else if (res.cancel) {
+          wx.cloud.callFunction({
+            name: 'callWaiter',
+            data: {
+              tableid: 1,
+              callWaiter: '1'
+          }
+        }).then(res => {
+          console.log('云函数更新table数据成功', res)
+        }).catch(res => {
+          console.log('云函数更新table数据失败', res)
+      })
+      } else if (res.cancel) {
           console.log('用户点击取消')
         }
       }
