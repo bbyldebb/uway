@@ -14,19 +14,19 @@
   <swiper>
     <swiper-item class="flex cross-axis-start">
       <scroll-view scroll-y class="menuClass">
-        <view class="menuClassItem flex" wx:for="{{menuClass}}">{{item.className}}</view>
+        <view class="menuClassItem flex" wx:for="{{menuClass}}"wx:for-item = "item" data-name = "{{item}}"bindtap="showExplicit">{{item}}</view>
       </scroll-view>
       <scroll-view scroll-y class="menuDetail">
-        <view class="flex menuDetailItem" wx:for="{{menuDetail}}" bindtap="showDetail" data-index="{{index}}">
-          <image src="{{item.dishImg}}" />
+        <view class="flex menuDetailItem" wx:for="{{menuDetail}}" wx:if = "{{item.class == curnav||curindex==0}}" bindtap="showDetail" data-index="{{index}}" >
+          <image src="{{item.image}}" />
           <view class="dishDsc">
             <view style="font-weight: 900;font-size: 35rpx;min-height: 30%;">
-              {{item.dishName}}
+              {{item.name}}
             </view>
-            <view style="min-height: 30%; color: rgb(	105,105,105);">{{item.dishInfo}}</view>
+            <view style="min-height: 30%; color: rgb(	105,105,105);">{{item.description}}</view>
             <view class="dscBottom flex main-axis-between">
               <view style="color: rgb(255,0,0,0.6);font-weight: 900;font-size: 35rpx;">
-                ￥{{item.dishPrice}}
+                ￥{{item.price}}
               </view>
               <mp-icon icon="add2" size="25" color="rgb(255,165,0,0.6)" style="margin-right: 20rpx;"></mp-icon>
             </view>
