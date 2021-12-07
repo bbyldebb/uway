@@ -16,17 +16,10 @@ exports.main = async (event, context) => {
   return db.collection('table')
   .where({
     ID:event.id
-    
   }).update({
     data:{
-      state:event.state
+      callWaiter:event.waitercall
     }
   })
-// return await db.collection('table').where({
-//   ID:event.id
-// }).update({
-//   data:{
-//     state:event.state
-//   }
-// })
+
 }

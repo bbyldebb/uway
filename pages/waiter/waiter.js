@@ -1,46 +1,15 @@
 
 Page(
     {
+
         data: {
-            //顾客呼叫信息
-            cust_mess: [
-                {
-                    id: 1
-                },
-                {
-                    id: 2
-                },
-                {
-                    id: 3
-                },
-                {
-                    id: 4
-                },
-                {
-                    id: 5
-                },
-                {
-                    id: 6
-                },
-                {
-                    id: 7
-                },
-                {
-                    id: 8
-                },
-                {
-
-                    id: 9
-                },
-
-            ],
             info: [
                 {
                     // id: 0,
 
                     show_condition: "",
                     available: "",
-                    cust_hide: false,
+                    cust_hide: true,
                     cook_hide: true,
                 },
                 {
@@ -48,84 +17,100 @@ Page(
 
                     show_condition: "",
                     available: "",
-                    cust_hide: false,
+                    cust_hide: true,
                     cook_hide: true,
                 }, {
                     // id: 0,
 
                     show_condition: "",
                     available: "",
-                    cust_hide: false,
+                    cust_hide: true,
                     cook_hide: true,
                 }, {
                     // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
-                    cust_hide: false,
+                    cust_hide: true,
                     cook_hide: true,
                 }, {
                     // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
-                    cust_hide: false,
+                    cust_hide: true,
                     cook_hide: true,
                 }, {
                     // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
-                    cust_hide: false,
+                    cust_hide: true,
                     cook_hide: true,
                 }, {
                     // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
-                    cust_hide: false,
+                    cust_hide: true,
                     cook_hide: true,
                 }, {
                     // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
-                    cust_hide: false,
+                    cust_hide: true,
                     cook_hide: true,
                 }, {
                     // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
-                    cust_hide: false,
+                    cust_hide: true,
                     cook_hide: true,
                 }, {
                     // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
-                    cust_hide: false,
+                    cust_hide: true,
                     cook_hide: true,
                 }, {
                     // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
-                    cust_hide: false,
+                    cust_hide: true,
                     cook_hide: true,
                 }, {
                     // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
-                    cust_hide: false,
+                    cust_hide: true,
                     cook_hide: true,
                 }, {
                     // id: 0,
                     // judge: false,
                     show_condition: "",
                     available: "",
-                    cust_hide: false,
+                    cust_hide: true,
+                    cook_hide: true,
+                },
+                {
+                    // id: 0,
+                    // judge: false,
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
+                },
+                {
+                    // id: 0,
+                    // judge: false,
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
                     cook_hide: true,
                 }
             ],
@@ -134,17 +119,56 @@ Page(
             CustNum: 0,
             CookNum: 0,
             id: 0,
+            control:0
 
         },
 
         async onLoad() {
+            var that = this;
+            wx.getSystemInfo({
+                success: function (res) {
+                    console.log(res);
+                    // 屏幕宽度、高度
+                    console.log('height=' + res.windowHeight);
+                    console.log('width=' + res.windowWidth);
+                    // 高度,宽度 单位为px
+                    that.setData({
+                        windowHeight: res.windowHeight,
+                        windowWidth: res.windowWidth,
+                        buttonLeft: res.windowWidth * 0.302,
+                        buttonTop: res.windowHeight * 0.1,
+                        control:0
+                    })
+                }
+            })
             this.WatchTable()
         },
         onShow() {
 
             this.WatchOrder()
+            this.WatchCust()
 
         },
+        async WatchCust() {
+            var that = this
+            const db = wx.cloud.database()
+            const temp = await db.collection('table').where({
+                callWaiter: "1"
+            }).watch({
+                onChange: snapshot => {
+                    console.log(snapshot.docs)
+                    that.setData({
+                        temp1: snapshot.docs
+                    })
+                    console.log(that.data.temp1)
+                    that.RefreshCust()
+                },
+                onError: function (err) {
+                    console.error("监听失败", err)
+                }
+            })
+        },
+
 
         async WatchOrder() {
             var that = this
@@ -153,12 +177,16 @@ Page(
                 state: '4'
             }).watch({
                 onChange: snapshot => {
-                    console.log(snapshot.docs)
-                    that.setData({
+                    // console.log(snapshot.docs)
+                    // if(temp==0){
+                        that.setData({
                         temp: snapshot.docs
                     })
-                    console.log(that.data.temp)
                     that.RefreshOrder()
+                // }
+                    
+                    // console.log(that.data.temp)
+                    
                 },
                 onError: function (err) {
                     console.error("监听失败", err)
@@ -166,13 +194,44 @@ Page(
             })
         },
 
+        async RefreshCust() {
+            var that = this
+            var CustNum = 0
+            var l = 0;
+            run()
+            async function run() {
+                if (l < that.data.temp1.length) {
+                    var i = that.data.temp1[l].ID
+                    console.log(i)
+                    that.data.info[parseInt(i)].cust_hide = false
+                    l++;
+                    run()
+                }
+                else {
+                    for (var j in that.data.info) {
+                        if (that.data.info[j].cust_hide == false)
+                            CustNum++;
+                    }
+                    that.setData(
+                        {
+                            info: that.data.info,
+                            CustNum: CustNum
+                        }
+                    )
+
+                }
+            }
+
+        },
+
         async RefreshOrder() {
+
             var that = this
             var CookNum = 0
             var l = 0;
-            // console.log(that.data.temp.length)
-            run()
-            async function run() {
+            console.log(that.data.temp.length)
+            run1()
+            async function run1() {
                 if (l < that.data.temp.length) {
 
                     var i = that.data.temp[l].referOrder
@@ -185,20 +244,24 @@ Page(
                     }).then(res => {
                         console.log('云函数读取orderItem数据成功', res.result.list[0])
                         that.data.info[parseInt(res.result.list[0].ID)].cook_hide = false
+                        
+
+
+
                     })
                         .catch(res => {
                             console.log('云函数获取orderItem数据失败', res)
                         })
 
                     l++;
-                    run()
+                    run1()
                 }
                 else {
                     for (var j in that.data.info) {
                         if (that.data.info[j].cook_hide == false)
                             CookNum++;
                     }
-                    that.setData(
+                    await that.setData(
                         {
 
                             info: that.data.info,
@@ -208,6 +271,17 @@ Page(
 
                 }
             }
+            that.setData(
+                {
+
+                    info: that.data.info,
+                    CookNum: CookNum
+                }
+            )
+            // CookNum = 0
+            // l = 0;
+            // console.log(that.data.temp.length)
+            // run1()
 
         },
 
@@ -259,24 +333,41 @@ Page(
             )
         },
 
-        custMesgHidden: function (e) {
+        async custMesgHidden(e) {
+            var that = this
             var dataid = e.currentTarget.dataset.item;
-            // console.log(dataid);
-            var that = this;
-            // that.data.info[dataid].cust_hide = !that.data.info[dataid].cust_hide;
+            console.log(dataid)
+            var that = this
+            const db = wx.cloud.database()
             that.data.info[dataid].cust_hide = true;
-            this.setData(
+            await this.setData(
                 {
                     info: that.data.info,
-                    CustNum: that.data.CustNum - 1
+                    CustNum: that.data.CustNum - 1,
                 }
             )
-
-
-
+            var title = '请尽给' + dataid + '号桌服务!'
+            wx.showToast({
+                title: title,
+                icon: 'none',
+                duration: 1800
+            })
+            await wx.cloud.callFunction({
+                name: 'UpdateTable',
+                data: {
+                    id: dataid,
+                    waitercall: "0",
+                }
+            }).then(res => {
+                console.log('云函数更新数据成功', res.result.data)
+            })
+                .catch(res => {
+                    console.log('云函数更新数据失败', res)
+                })
 
         },
         async cookMesgHidden(e) {
+
             var that = this
             var dataid = e.currentTarget.dataset.item;
 
@@ -311,27 +402,28 @@ Page(
                 console.log('云函数读取orderItem数据成功', res.result.list)
 
                 // for (var i in res.result.list) {
-                    var order = res.result.list[0].referOrder
-                    console.log(order)
-                    await wx.cloud.callFunction({
-                        name: 'UpdateOrderItem',
-                        data: {
-                            referorder: order,
-                        }
-                    }).then(res => {
-                        console.log('云函数更新数据成功', res.result.data)
+                var order = res.result.list[0].referOrder
+                console.log(order)
+                await wx.cloud.callFunction({
+                    name: 'UpdateOrderItem',
+                    data: {
+                        referorder: order,
+                    }
+                }).then(res => {
+                   that.onLoad()
+
+                })
+                    .catch(res => {
+                        console.log('云函数更新数据失败', res)
                     })
-                        .catch(res => {
-                            console.log('云函数更新数据失败', res)
-                        })
 
                 // }
-                
 
             })
                 .catch(res => {
                     console.log('云函数获取orderItem数据失败', res)
                 })
+
 
 
 
@@ -354,9 +446,7 @@ Page(
         },
 
         onChangeAvailable: function (e) {
-            wx.showLoading({
-                title: '加载中...'
-            })
+
             var temp = this.data.id;
             var that = this;
             // var up = "info[" + temp + "].judge";
@@ -366,12 +456,18 @@ Page(
             if (dataid == '1') {
                 dataid = '2'
                 title = "绑定成功!"
+                wx.showLoading({
+                    title: '绑定中...'
+                })
             }
 
 
             else if (dataid == '2') {
                 dataid = '3'
                 title = "解绑成功!"
+                wx.showLoading({
+                    title: '解绑中...'
+                })
             }
 
             wx.cloud.callFunction({
@@ -393,9 +489,6 @@ Page(
                     console.log('云函数更新数据失败', res)
                 })
             //数据库获取数据
-
-
-
             that.data.info[temp].show_condition = !that.data.info[temp].show_condition;
             that.data.info[temp].available = !that.data.info[temp].available;
             // that.data.info[temp].judge = !that.data.info[temp].judge;
@@ -409,53 +502,4 @@ Page(
             )
 
         },
-        SetTable: function (e) {
-            var that = this
-            wx.showModal({
-                title: '添加桌子',
-                content: '确定增加一张桌子？',
-                showCancel: true,//是否显示取消按钮      
-                cancelText: "取消",//默认是“取消”      
-                cancelColor: '#DEB887',//取消文字的颜色      
-                confirmText: "确定",//默认是“确定”      
-                confirmColor: '#DEB887',//确定文字的颜色      
-                success: function (res) {
-                    if (res.cancel) {
-                        //点击取消,默认隐藏弹框        
-                    } else {
-                        wx.showLoading({
-                            title: '添加中...'
-                        })
-                        //点击确定          
-                        wx.cloud.callFunction({
-                            name: 'AddTable',
-                            data: {
-                                id: that.data.length,
-                            }
-                        }).then(res => {
-                            wx.hideLoading();
-                            wx.showToast({
-                                title: "添加成功!",
-                                icon: 'success',
-                                duration: 1500
-                            })
-                            console.log("成功")
-                        })
-                            .catch(res => {
-                                console.log('云函数更新数据失败', res)
-                            })
-
-                    }
-                },
-                fail: function (res) { },//接口调用失败的回调函数      
-                complete: function (res) {
-                    wx.showToast({
-                        title: "请重试!",
-                        icon: 'none',
-                        duration: 1500
-                    })
-
-                },//接口调用结束的回调函数（调用成功、失败都会执行）   
-            })
-        }
     })
