@@ -14,19 +14,5 @@ cloud.init({
 exports.main = async (event, context) => {
   console.log("event",event)
   return db.collection('table')
-  .where({
-    ID:event.id
-    
-  }).update({
-    data:{
-      state:event.state
-    }
-  })
-// return await db.collection('table').where({
-//   ID:event.id
-// }).update({
-//   data:{
-//     state:event.state
-//   }
-// })
+  .doc(event._id).remove()
 }
