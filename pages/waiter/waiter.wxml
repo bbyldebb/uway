@@ -7,9 +7,9 @@
                 <view wx:if="{{CustNum>0}}" class="CustNumber">{{CustNum}}</view>
             </view>
             <scroll-view scroll-y style="height: 85%">
-                <view class="box1_info2" wx:for="{{cust_mess}}" wx:key="*this">
-                    <view hidden="{{info[item.id].cust_hide}}" data-item="{{item.id}}" bindtap="custMesgHidden" class="info1">
-                        {{item.id}}号桌的客人呼叫啦！
+                <view class="box1_info2" wx:if="{{i>0}}" wx:for-index="i" wx:for="{{mysql}}" wx:key="_id">
+                    <view hidden="{{info[item.ID].cust_hide}}" data-item="{{item.ID}}" bindtap="custMesgHidden" class="info1">
+                        {{item.ID}}号桌的客人呼叫啦！
                     </view>
                 </view>
             </scroll-view>
@@ -29,36 +29,80 @@
         </view>
     </view>
     <view class="rightInfo">
-         <!-- <view wx:for="{{mysql}}" wx:key="_id"> 
+        <!-- <view wx:for="{{mysql}}" wx:key="_id"> 
             {{item.ID}}
             
 
         </view> -->
         <!-- 让info从第二个开始遍历 -->
-        <view class="box2_view" wx:if="{{i>0}}" wx:for-index="i" wx:for="{{mysql}}" wx:key="_id">
-            <!-- <button bindtap="onChangeShowState" data-item="{{item.ID}}" class="table" wx:if="{{info[item.ID].judge}}" style="background-color: #C25939">
-                {{item.state}}号桌
-            </button> -->
-            <button bindtap="onChangeShowState" data-item="{{item.ID}}" class="table" wx:if="{{item.state=='3'||item.state=='4'}}" disabled='disabled' style="background-color: #C0C0C0">
-                {{item.ID}}号桌
-            </button>
-            <button bindtap="onChangeShowState" data-item="{{item.ID}}" class="table" wx:if="{{item.state=='2'}}" style="background-color: #C25939">
-                {{item.ID}}号桌
-            </button>
-            <button bindtap="onChangeShowState" data-item="{{item.ID}}" class="table" wx:if="{{item.state=='1'}}" style="background-color: #CF9B69">
-                {{item.ID}}号桌
-            </button>
-            <view class="table_action">
-                <view  wx:if="{{item.state=='1'&&id==item.ID&&info[item.ID].show_condition&&info[item.ID].available}}">
-                    <button bindtap="onChangeAvailable" data-item="{{item.state}}" class="btn">绑定</button>
+        <view class="index" wx:if="{{i>0}}" wx:for-index="i" wx:for="{{mysql}}" wx:key="_id">
+            <!-- item.PositionX+buttonLeft+200>=windowWidth -->
+            <view class="box2_view" wx:if="{{item.PositionX+buttonLeft+200>windowWidth}}" style="top:{{(item.PositionY)}}px;left:{{(item.PositionX+buttonLeft)*0.929}}px;position:fixed;">
+                <view class="table_action_other">
+                    <view wx:if="{{item.state=='1'&&id==item.ID&&info[item.ID].show_condition&&info[item.ID].available}}">
+                        <button bindtap="onChangeAvailable" data-item="{{item.state}}" class="btn">
+                            绑定
+                        </button>
+                    </view>
+                    <view wx:if="{{item.state=='2'&&id==item.ID&&info[item.ID].show_condition&&!info[item.ID].available}}">
+                        <button class="btn">点餐</button>
+                    </view>
+                    <view wx:if="{{item.state=='2'&&id==item.ID&&info[item.ID].show_condition&&!info[item.ID].available}}">
+                        <button bindtap="onChangeAvailable" data-item="{{item.state}}" class="btn">
+                            解绑
+                        </button>
+                    </view>
                 </view>
-                <view wx:if="{{item.state=='2'&&id==item.ID&&info[item.ID].show_condition&&!info[item.ID].available}}">
-                    <button class="btn">点餐</button>
+                <button bindtap="onChangeShowState" data-item="{{item.ID}}" class="table" wx:if="{{item.state=='3'||item.state=='4'}}" disabled='disabled' style="background-color: #C0C0C0">
+                    {{item.ID}}号桌
+                </button>
+                <button bindtap="onChangeShowState" data-item="{{item.ID}}" class="table" wx:if="{{item.state=='2'}}" style="background-color: #C25939">
+                    {{item.ID}}号桌
+                </button>
+                <button bindtap="onChangeShowState" data-item="{{item.ID}}" class="table" wx:if="{{item.state=='1'}}" style="background-color: #CF9B69">
+                    {{item.ID}}号桌
+                </button>
+            </view>
+            <view class="box2_view" wx:if="{{item.PositionX+buttonLeft+200<=windowWidth}}" style="top:{{(item.PositionY)}}px;left:{{(item.PositionX+buttonLeft)*1}}px;position:fixed;">
+                <button bindtap="onChangeShowState" data-item="{{item.ID}}" class="table" wx:if="{{item.state=='3'||item.state=='4'}}" disabled='disabled' style="background-color: #C0C0C0">
+                    {{item.ID}}号桌
+                </button>
+                <button bindtap="onChangeShowState" data-item="{{item.ID}}" class="table" wx:if="{{item.state=='2'}}" style="background-color: #C25939">
+                    {{item.ID}}号桌
+                </button>
+                <button bindtap="onChangeShowState" data-item="{{item.ID}}" class="table" wx:if="{{item.state=='1'}}" style="background-color: #CF9B69">
+                    <!-- #CF9B69 C25939 -->
+                    {{item.ID}}号桌
+                </button>
+                <view class="table_action">
+                    <view wx:if="{{item.state=='1'&&id==item.ID&&info[item.ID].show_condition&&info[item.ID].available}}">
+                        <button bindtap="onChangeAvailable" data-item="{{item.state}}" class="btn">
+                            绑定
+                        </button>
+                    </view>
+                    <view wx:if="{{item.state=='2'&&id==item.ID&&info[item.ID].show_condition&&!info[item.ID].available}}">
+                        <button class="btn">点餐</button>
+                    </view>
+                    <view wx:if="{{item.state=='2'&&id==item.ID&&info[item.ID].show_condition&&!info[item.ID].available}}">
+                        <button bindtap="onChangeAvailable" data-item="{{item.state}}" class="btn">
+                            解绑
+                        </button>
+                    </view>
                 </view>
-                <view  wx:if="{{item.state=='2'&&id==item.ID&&info[item.ID].show_condition&&!info[item.ID].available}}">
-                    <button bindtap="onChangeAvailable" data-item="{{item.state}}" class="btn">解绑</button>
-                </view>
-   
+            </view>
+        </view>
+        <view class="tips" wx:if="{{mysql.length>0}}">
+            <view class="tip">
+                <view style="background-color: #CF9B69 ;height:20px; width:20px"></view>
+                <view>：清洁完毕，等待顾客</view>
+            </view >
+            <view class="tip">
+                <view style="background-color: #C25939 ;height:20px ;width:20px"></view>
+                <view>：顾客正在用餐</view>
+            </view>
+            <view class="tip">
+                <view style="background-color: #C0C0C0 ;height:20px ;width:20px"></view>
+                <view>：待清洁</view>
             </view>
         </view>
     </view>

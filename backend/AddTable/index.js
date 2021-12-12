@@ -12,21 +12,14 @@ cloud.init({
   const $ = db.command.aggregate  
 // 云函数入口函数
 exports.main = async (event, context) => {
-  console.log("event",event)
-  return db.collection('table')
-  .where({
-    ID:event.id
-    
-  }).update({
+  return await db.collection('table').add({
     data:{
-      state:event.state
-    }
+  ID:event.id,
+  state:"1",
+  PositionX:event.x,
+  PositionY:event.y,
+  callWaiter:'0'
+    },
   })
-// return await db.collection('table').where({
-//   ID:event.id
-// }).update({
-//   data:{
-//     state:event.state
-//   }
-// })
+
 }

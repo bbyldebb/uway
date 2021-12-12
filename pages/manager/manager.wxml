@@ -12,7 +12,7 @@
                 <text>菜单管理</text>
             </view>
         </navigator>
-        <navigator url="../cook/cook" class="each-box" hover-class="hover-color">
+        <navigator url="../layout/layout" class="each-box" hover-class="hover-color">
             <view>
                 <mp-icon type="outline" icon="max-window" color="black" size="{{60}}"></mp-icon>
                 <text>餐厅布局</text>
