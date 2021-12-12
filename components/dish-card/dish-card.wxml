@@ -1,0 +1,14 @@
+<view class="modal-mask" wx:if="{{show}}">
+    <view class="modal-content">
+        <view class="main-content flex flex-col" style="height:87%;">
+            <view style="font-size:35rpx;margin:15rpx;">{{dishName}}</view>
+            <image style="width:525rpx;height:475rpx;" class="photo" src="{{dishImg}}" />
+            <view class="description">
+                <view>月售：{{dishSold}}</view>
+                <view>菜品介绍：{{dishDsc}}</view>
+            </view>
+        </view>
+        <view class="modal-footer flex" style="height:13%;"></view>
+        <mp-icon icon="close2" color="DarkGray" size="{{60}}" bindtap="cancel"></mp-icon>
+    </view>
+</view>

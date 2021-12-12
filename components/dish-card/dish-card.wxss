@@ -1,0 +1,31 @@
+@import "/style/flex.wxss";
+
+/* components/modal/modal.wxss */
+/*遮罩层*/
+.modal-mask {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 20rpx;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+}
+
+/*遮罩内容*/
+.modal-content {
+    width: 85vw;
+    height: 70vh;
+    background-color: rgba(245, 245, 245, 0.9);
+    border-radius: 10rpx;
+    text-align: center;
+}
+
+/*遮罩底部*/
+.modal-footer {
+    background-color: rgb(169, 169, 169, 0.1);
+}
