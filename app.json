@@ -1,10 +1,12 @@
 {
   "pages": [
+    "pages/manager/manager",
+    "pages/check_staff/check_staff",
+    "pages/waiter/waiter",
     "pages/index/index",
+    "pages/staff/staff",
     "pages/busboy/busboy",
     "pages/customer/customer",
-    "pages/waiter/waiter",
-    "pages/manager/manager",
     "pages/cook/cook"
   ],
   "window": {

@@ -1,6 +1,6 @@
 <view class="manager-box">
     <view class="page-box">
-        <navigator url="../cook/cook" class="each-box" hover-class="hover-color">
+        <navigator url="../staff/staff" class="each-box" hover-class="hover-color">
             <view>
                 <mp-icon type="field" icon="group-detail" color="black" size="{{60}}"></mp-icon>
                 <text>人事管理</text>
@@ -38,3 +38,7 @@
         </navigator>
     </view>
 </view>
+
+
+
+
