@@ -5,6 +5,7 @@
     "pages/customer/customer",
     "pages/waiter/waiter",
     "pages/manager/manager",
+    "pages/layout/layout",
     "pages/cook/cook"
   ],
   "window": {

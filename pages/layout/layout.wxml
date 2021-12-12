@@ -1,14 +1,37 @@
 <view class="content">
+    <view wx:if="{{completed}}">
+        <view class='toast-box'>
+            <view class='toastbg'></view>
+            <view class='showToast'>
+                <view class='toast-title'>
+                    <text>增加一张桌子</text>
+                </view>
+                <view class='toast-main'>
+                    <view class='toast-input'>
+                        <input type='number' cursor-spacing="50rpx" placeholder='请输入桌子的编号~推荐{{lastesttable}}号' focus="true" bindinput='getUserInput'></input>
+                    </view>
+                </view>
+                <view class='toast-button'>
+                    <view class='cancel'>
+                        <button bindtap="cancelSelected">取消</button>
+                    </view>
+                    <view class='success'>
+                        <button bindtap="successSelected">确定</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
     <view class="control">
         <button wx:if="{{index==1}}" bindtap="SetTable" class="btn">增加桌子</button>
         <button wx:if="{{index==1}}" bindtap="Delete" class="btn">删除桌子</button>
         <button wx:if="{{index==1}}" bindtap="Change" class="btn">布局</button>
         <button wx:if="{{index==2}}" bindtap="Confirm" class="btn">确定</button>
-        <button wx:if="{{index==2}}" bindtap="Cancel" class="btn">撤回</button>   
+        <button wx:if="{{index==2}}" bindtap="Cancel" class="btn">撤回</button>
         <button wx:if="{{index==2}}" bindtap="Refer" class="btn">初始化</button>
     </view>
     <view class="layout">
-        <view  wx:if="{{i>0}}" wx:for-index="i" wx:for="{{mysql1}}" wx:key="_id">
+        <view wx:if="{{i>0}}" wx:for-index="i" wx:for="{{mysql1}}" wx:key="_id">
             <button class="table" data-item="{{item.ID}}" bindtouchmove="buttonMove" bindtouchstart="buttonStart" bindtouchend="buttonEnd" bindtap="clicks" style="top:{{item.PositionY+buttonTop}}px;left:{{item.PositionX+buttonLeft}}px;position:fixed;">
                 {{item.ID}}号桌
             </button>
