@@ -14,28 +14,70 @@
   <swiper>
     <swiper-item class="flex cross-axis-start">
       <scroll-view scroll-y class="menuClass">
-        <view class="menuClassItem flex" wx:for="{{menuClass}}"wx:for-item = "item" data-name = "{{item}}"bindtap="showExplicit">{{item}}</view>
+        <view class="menuClassItem flex" wx:for="{{menuClass}}" data-name="{{item}}" bindtap="showExplicit">
+          {{item}}
+        </view>
+        <view style="height:100rpx;"></view>
       </scroll-view>
       <scroll-view scroll-y class="menuDetail">
-        <view class="flex menuDetailItem" wx:for="{{menuDetail}}" wx:if = "{{item.class == curnav||curindex==0}}" bindtap="showDetail" data-index="{{index}}" >
-          <image src="{{item.image}}" />
+        <view class="flex menuDetailItem" wx:for="{{menuDetail}}" wx:if="{{item.class == curnav||curindex==0}}" bindtap="showDetail" data-index="{{index}}">
+          <image src="{{item.image}}" style="width:320rpx;height: 200rpx;" />
           <view class="dishDsc">
-            <view style="font-weight: 900;font-size: 35rpx;min-height: 30%;">
-              {{item.name}}
-            </view>
+            <view style="font-weight: 900;font-size: 35rpx;min-height: 30%;">{{item.name}}</view>
             <view style="min-height: 30%; color: rgb(	105,105,105);">{{item.description}}</view>
-            <view class="dscBottom flex main-axis-between">
-              <view style="color: rgb(255,0,0,0.6);font-weight: 900;font-size: 35rpx;">
+            <view class="dscBottom flex main-axis-between" style="flex:1;" bindtap="AddorMinus">
+              <view style="color: rgb(255,0,0,0.6);font-weight: 900;font-size: 35rpx;flex:1;">
                 ￥{{item.price}}
               </view>
-              <mp-icon icon="add2" size="25" color="rgb(255,165,0,0.6)" style="margin-right: 20rpx;"></mp-icon>
+              <image style="width:40rpx;height:40rpx;" src="../../static/img/minus.png" data-index="{{index}}" bindtap="minusDish" />
+              <view>{{item.num}}</view>
+              <image style="width:40rpx;height:40rpx;padding-right:25rpx;" src="../../static/img/add.png" data-index="{{index}}" bindtap="addDish" />
             </view>
           </view>
         </view>
+        <view style="height:80rpx;"></view>
       </scroll-view>
+      <!-- 底部提交订单 -->
+      <view class="orderList flex">
+        <view class="cartIcon" bindtap="showCart">
+          <image style="width:95rpx; height:95rpx; margin-top: 10rpx" src="../../static/img/order.png" />
+        </view>
+        <view class="totalMoney" bindtap="showCart">总计{{totalMoney}}元，{{totalNum}}件</view>
+        <view class="confirmBtn">提交订单</view>
+      </view>
+      <!-- 蒙层背景 -->
+      <view class="maskBg" wx:if="{{showCart}}" bindtap="hideCart"></view>
+      <!-- 购物车列表 -->
+      <view class="cartList" wx:if="{{showCart}}">
+        <view class="cart-top">
+          <view>清空</view>
+          <view style="font-size: 32rpx">全部订单</view>
+          <view bindtap="hideCart">返回</view>
+        </view>
+        <scroll-view scroll-y class="cart-content" style="height:100%; margin-top:65rpx;overflow:auto;padding-bottom:75rpx;">
+          <view wx:for="{{orderDetail}}">
+            <view class="order-item flex">
+              <view class="flex" style="width:60%">
+                <view>{{item.name}}</view>
+                <view style="color:red;padding-left:20rpx;">{{item.price}}</view>
+              </view>
+              <view class="flex" style="width:30%;">
+                <image style="width:40rpx;height:40rpx;" src="../../static/img/minus.png" data-index="{{index}}" bindtap="minusDish" />
+                <view style="padding: 0 15rpx;">{{item.num}}</view>
+                <image style="width:40rpx;height:40rpx;padding-right:25rpx;" src="../../static/img/add.png" data-index="{{index}}" bindtap="addDish" />
+              </view>
+              <view style="width:10%;">
+                <mp-icon size="{{25}}" icon="close2" color="darkgray"></mp-icon>
+              </view>
+            </view>
+          </view>
+          <view style="height:75rpx;"></view>
+        </scroll-view>
+      </view>
     </swiper-item>
     <swiper-item>这里是还在建设中的评价界面</swiper-item>
     <swiper-item>这里是还在建设中的商家信息界面</swiper-item>
     <swiper-item>这里是还在建设中的搜索结果界面</swiper-item>
   </swiper>
+  <dish-card show="{{showDishCard}}" dishID="{{cardID}}"></dish-card>
 </scroll-view>

@@ -32,6 +32,7 @@ swiper {
 .menuClass {
   width: 22%;
   height: 100%;
+  background-color: rgb(192, 192, 192, 0.1);
 }
 
 .menuClassItem {
@@ -63,4 +64,79 @@ swiper {
   display: flex;
   flex-direction: column;
   height: 90%;
+  width: 100%;
+}
+
+.orderList {
+  position: fixed;
+  bottom: 0rpx;
+  width: 100vw;
+  height: 100rpx;
+  background-color: rgb(254, 244, 209);
+}
+
+.cartIcon {
+  width: 120rpx;
+  height: 120rpx;
+  position: fixed;
+  bottom: 3rpx;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #ff9600;
+}
+
+.totalMoney {
+  flex: 1;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.maskBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.5;
+  background: black;
+  z-index: 100;
+}
+
+.cartList {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 550rpx;
+  background: white;
+  z-index: 200;
+}
+
+.cart-top {
+  display: flex;
+  justify-content: space-between;
+  background: orange;
+  height: 60rpx;
+  color: white;
+  font-weight: 500;
+  font-size: 28rpx;
+  padding: 5rpx 15rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+.order-item {
+  border-bottom: 1rpx solid rgb(128, 128, 128, 0.2);
+  padding: 5rpx 15rpx;
+  height: 75rpx;
+}
+
+.confirmBtn {
+  height: 100%;
+  width: 170rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background-color: rgb(244, 201, 3, 0.6);
 }

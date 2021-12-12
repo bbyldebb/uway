@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "mp-icon": "../../miniprogram_npm/weui-miniprogram/icon/icon"
+    "mp-icon": "../../miniprogram_npm/weui-miniprogram/icon/icon",
+    "dish-card": "../../components/dish-card/dish-card"
   },
-  "style": "v2"
+  "style": "v2",
+  "disableScroll": true
 }
