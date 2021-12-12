@@ -346,7 +346,7 @@ Page(
                     CustNum: that.data.CustNum - 1,
                 }
             )
-            var title = '请尽给' + dataid + '号桌服务!'
+            var title = '请尽快给' + dataid + '号桌服务!'
             wx.showToast({
                 title: title,
                 icon: 'none',

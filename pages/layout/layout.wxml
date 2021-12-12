@@ -8,7 +8,7 @@
                 </view>
                 <view class='toast-main'>
                     <view class='toast-input'>
-                        <input type='number' placeholder='请输入桌子的编号~推荐{{lastesttable}}号' focus="true" bindinput='getUserInput'></input>
+                        <input type='number' cursor-spacing="50rpx" placeholder='请输入桌子的编号~推荐{{lastesttable}}号' focus="true" bindinput='getUserInput'></input>
                     </view>
                 </view>
                 <view class='toast-button'>

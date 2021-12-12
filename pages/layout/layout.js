@@ -130,7 +130,7 @@ Page(
 
                 var temp = false
                 for (m = 1; m < last; m++) {
-                    console.log(that.data.mysql[m].ID)
+                    // console.log(that.data.mysql[m].ID)
                     if (parseInt(that.data.mysql[m].ID) == i) {
                         temp = true
                         break
