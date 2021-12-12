@@ -94,7 +94,6 @@ Page({
                 bkcolor: "background-color:#C25939" //#CF9B69
             },
 
-
         ],
 
         CustNum: 9,
@@ -151,8 +150,8 @@ Page({
         that.data.info[temp].available = !that.data.info[temp].available;
         that.data.info[temp].judge = !that.data.info[temp].judge;
         var aa;
-        var bb;
         const db = wx.cloud.database()
+
         db.collection('table').where({ "ID": temp })
             .get()
             .then(res => {

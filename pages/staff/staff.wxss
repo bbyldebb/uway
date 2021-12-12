@@ -1,4 +1,3 @@
-/* pages/manager/manager.wxss */
 page {
     height: 100%;
 }
@@ -32,7 +31,3 @@ page {
 .hover-color {
     background: linear-gradient(to bottom right, white, #b0d5df)
 }
-
-
-
-

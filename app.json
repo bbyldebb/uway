@@ -5,6 +5,8 @@
     "pages/customer/customer",
     "pages/waiter/waiter",
     "pages/manager/manager",
+    "pages/staff/staff",
+    "pages/check_staff/check_staff",
     "pages/layout/layout",
     "pages/cook/cook"
   ],

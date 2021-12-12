@@ -1,0 +1,23 @@
+<view class="manager-box">
+    <view class="page-box">
+        <navigator url="../check_staff/check_staff?type=cook" class="each-box" hover-class="hover-color"bindtap="checkCook">
+            <view>
+                <mp-icon type="field" icon="group-detail" color="black" size="{{60}}"></mp-icon>
+                <text>厨师</text>
+            </view>
+        </navigator>
+        <navigator url="../check_staff/check_staff?type=waiter" class="each-box" hover-class="hover-color"bindtap="checkWaiter">
+            <view>
+                <mp-icon type="field" icon="pencil" color="black" size="{{60}}"></mp-icon>
+                <text>服务员</text>
+            </view>
+        </navigator>
+        <navigator url="../check_staff/check_staff?type=busboy" class="each-box" hover-class="hover-color"bindtap="checkBusboy">
+            <view>
+                <mp-icon type="outline" icon="max-window" color="black" size="{{60}}"></mp-icon>
+                <text>勤杂工</text>
+            </view>
+        </navigator>
+
+    </view>
+</view>
