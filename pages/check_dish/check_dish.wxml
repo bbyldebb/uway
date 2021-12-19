@@ -1,0 +1,113 @@
+<page-meta>
+  <navigation-bar
+    title="{{nbTitle}}"
+    loading="{{nbLoading}}"
+    front-color="{{nbFrontColor}}"
+    background-color="{{nbBackgroundColor}}"
+    color-animation-duration="2000"
+    color-animation-timing-func="easeIn"
+  />
+</page-meta>
+    <view class="middle">
+        <scroll-view class="scroll" style="height: 90%;" scroll-y>
+            <view class="dish_list" wx:for="{{dish_message}}" wx:key="_id" >
+                <image src="{{item.image}}" />
+                <view class="dish_message" bindtap="readText" data-name="{{item.name}}" data-ds="{{item.description}}">
+                    <text class="dish_detail">菜名：{{item.name}}</text>
+                    <text class="dish_detail">价格：{{item.price}}</text>
+                    <text class="dish_detail">描述:{{item.description}}</text>
+                </view>
+                <button class="edit" style="width:20%;" data-index="{{index}}" bindtap="editIt" data-id="{{item._id}}">
+                    编辑
+                </button>
+                <button class="del" style="width:20%;" data-index="{{index}}" bindtap="deleteIt" data-id="{{item._id}}">
+                    删除
+                </button>
+            </view>
+        </scroll-view>
+    </view>
+     <movable-area class="movable-area">
+    <movable-view class="movable-view" direction="all" bindtap="addit">
+        
+    </movable-view>
+  </movable-area>
+  
+
+<view  class="drawer_box" wx:if="{{showModalStatus}}">  
+  
+  <!--drawer content-->  
+  <view class="drawer_title">添加菜品</view>  
+  <scroll-view class="scroll" style="height: 90%;" scroll-y>
+  <form class="drawer_content"bindsubmit='formSubmit'>  
+    <view class="top grid">  
+      <label class="title col-0">菜品：</label>  
+      <input class="input_base input_h30 col-1" name="temp_name" ></input>  
+    </view>  
+    <view class="top grid">  
+      <label class="title col-0">类别：</label>  
+      <input class="input_base input_h30 col-1" name="temp_type" value='{{type_}}'></input>  
+    </view>  
+    <view class="top grid">  
+      <label class="title col-0">ID：</label>  
+      <input class="input_base input_h30 col-1" name="temp_ID" ></input>  
+    </view> 
+    <view class="top grid">  
+      <label class="title col-0">价格：</label>  
+      <input class="input_base input_h30 col-1" name="temp_price"></input>  
+    </view>  
+    <view class="top grid">  
+      <label class="title col-0">描述：</label>  
+      <input class="input_base input_h30 col-1" name="temp_desc" ></input>  
+    </view>  
+    <view class="top grid">  
+      <label class="title col-0">图片：</label>  
+      <input class="input_base input_h30 col-1" name="temp_pic"value='{{no_pic}}'></input>  
+    </view> 
+    <button form-type='submit'class="sub"bindtap="sub">确定</button>
+    <button class="cancel"bindtap="cancel">取消</button>
+    
+  </form>  
+  
+   </scroll-view>
+
+</view>
+
+
+<view  class="drawer_box2" wx:if="{{showModalStatus2}}">  
+  
+  <!--drawer content-->  
+  <view class="drawer_title">弹窗标题2</view>  
+  <scroll-view class="scroll" style="height: 90%;" scroll-y>
+  <form class="drawer_content"bindsubmit='formSubmit2'>  
+    <view class="top grid">  
+      <label class="title col-0">菜品：</label>  
+      <input class="input_base input_h30 col-1" name="temp_name" value='{{name_}}'></input>  
+    </view>  
+    <view class="top grid">  
+      <label class="title col-0">类别：</label>  
+      <input class="input_base input_h30 col-1" name="temp_type" value='{{type_}}'></input>  
+    </view>  
+    <view class="top grid">  
+      <label class="title col-0">ID：</label>  
+      <input class="input_base input_h30 col-1" name="temp_ID" value='{{ID_}}'></input>  
+    </view> 
+    <view class="top grid">  
+      <label class="title col-0">价格：</label>  
+      <input class="input_base input_h30 col-1" name="temp_price" value='{{price_}}'></input>  
+    </view>  
+    <view class="top grid">  
+      <label class="title col-0">描述：</label>  
+      <input class="input_base input_h30 col-1" name="temp_desc" value='{{desc_}}'></input>  
+    </view>  
+    <view class="top grid">  
+      <label class="title col-0">图片：</label>  
+      <input class="input_base input_h30 col-1" name="temp_pic" value='{{pic_}}'></input>  
+    </view> 
+    <button form-type='submit'class="sub"bindtap="sub2">确定</button>
+    <button class="cancel"bindtap="cancel2">取消</button>
+    
+  </form>  
+  
+   </scroll-view>
+
+</view>
