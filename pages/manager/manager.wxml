@@ -6,7 +6,7 @@
                 <text>人事管理</text>
             </view>
         </navigator>
-        <navigator url="../cook/cook" class="each-box" hover-class="hover-color">
+        <navigator url="../dish/dish" class="each-box" hover-class="hover-color">
             <view>
                 <mp-icon type="field" icon="pencil" color="black" size="{{60}}"></mp-icon>
                 <text>菜单管理</text>

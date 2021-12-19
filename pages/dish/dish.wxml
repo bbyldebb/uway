@@ -1,0 +1,35 @@
+<view class="manager-box">
+    <view class="page-box">
+        <navigator url="../check_dish/check_dish?type=甜品" class="each-box" hover-class="hover-color"bindtap="checkCook">
+            <view>
+                <mp-icon type="field" icon="group-detail" color="black" size="{{60}}"></mp-icon>
+                <text>甜品</text>
+            </view>
+        </navigator>
+        <navigator url="../check_dish/check_dish?type=家常小炒" class="each-box" hover-class="hover-color"bindtap="checkWaiter">
+            <view>
+                <mp-icon type="field" icon="pencil" color="black" size="{{60}}"></mp-icon>
+                <text>家常小炒</text>
+            </view>
+        </navigator>
+        <navigator url="../check_dish/check_dish?type=滋补靓汤" class="each-box" hover-class="hover-color"bindtap="checkBusboy">
+            <view>
+                <mp-icon type="outline" icon="max-window" color="black" size="{{60}}"></mp-icon>
+                <text>滋补靓汤</text>
+            </view>
+        </navigator>
+        <navigator url="../check_dish/check_dish?type=夜宵" class="each-box" hover-class="hover-color"bindtap="checkBusboy">
+            <view>
+                <mp-icon type="outline" icon="max-window" color="black" size="{{60}}"></mp-icon>
+                <text>夜宵</text>
+            </view>
+        </navigator>
+        <navigator url="../check_dish/check_dish?type=海鲜大餐" class="each-box" hover-class="hover-color"bindtap="checkBusboy">
+            <view>
+                <mp-icon type="outline" icon="max-window" color="black" size="{{60}}"></mp-icon>
+                <text>海鲜大餐</text>
+            </view>
+        </navigator>
+
+    </view>
+</view>
