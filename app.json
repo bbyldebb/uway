@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/busboy/busboy",
     "pages/customer/customer",
+    "pages/comment/comment",
+    "pages/busboy/busboy",
     "pages/waiter/waiter",
     "pages/manager/manager",
     "pages/cook/cook"

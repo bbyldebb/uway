@@ -14,15 +14,15 @@
   <swiper>
     <swiper-item class="flex cross-axis-start">
       <scroll-view scroll-y class="menuClass">
-        <view class="menuClassItem flex" wx:for="{{menuClass}}"wx:for-item = "item" data-name = "{{item}}"bindtap="showExplicit">{{item}}</view>
+        <view class="menuClassItem flex" wx:for="{{menuClass}}" wx:for-item="item" data-name="{{item}}" bindtap="showExplicit">
+          {{item}}
+        </view>
       </scroll-view>
       <scroll-view scroll-y class="menuDetail">
-        <view class="flex menuDetailItem" wx:for="{{menuDetail}}" wx:if = "{{item.class == curnav||curindex==0}}" bindtap="showDetail" data-index="{{index}}" >
+        <view class="flex menuDetailItem" wx:for="{{menuDetail}}" wx:if="{{item.class == curnav||curindex==0}}" bindtap="showDetail" data-index="{{index}}">
           <image src="{{item.image}}" />
           <view class="dishDsc">
-            <view style="font-weight: 900;font-size: 35rpx;min-height: 30%;">
-              {{item.name}}
-            </view>
+            <view style="font-weight: 900;font-size: 35rpx;min-height: 30%;">{{item.name}}</view>
             <view style="min-height: 30%; color: rgb(	105,105,105);">{{item.description}}</view>
             <view class="dscBottom flex main-axis-between">
               <view style="color: rgb(255,0,0,0.6);font-weight: 900;font-size: 35rpx;">
@@ -34,7 +34,48 @@
         </view>
       </scroll-view>
     </swiper-item>
-    <swiper-item>这里是还在建设中的评价界面</swiper-item>
+    <swiper-item class="flex cross-axis-start">
+      <scroll-view scroll-y class="commentDetail">
+        <view class="flex commentDetailItem" wx:for="{{comment}}">
+          <view class="customer-info">
+            <image mode="widthFix" src="{{item.avatarUrl}}" />
+            <view class="customer-info-word">
+              <view>{{item.nickName}}</view>
+              <view>{{item.commentTime}}</view>
+            </view>
+          </view>
+          <view class="rating">
+            <view class="ratingbox">
+              <view class="text">菜品</view>
+              <view class="stars">
+                <view wx:for="{{item.dishstars}}" wx:key="" class="single" style='background:url("{{item.flag==1?bgImg:bgfImg}}") no-repeat center; background-size:50%;' data-index="{{index}}">{{item.dishstars}}</view>
+              </view>
+            </view>
+            <view class="ratingbox">
+              <view class="text">餐馆</view>
+              <view class="stars">
+                <view wx:for="{{item.reststars}}" wx:key="" class="single" style='background:url("{{item.flag==1?bgImg:bgfImg}}") no-repeat center; background-size:50%;' data-index="{{index}}"></view>
+              </view>
+            </view>
+            <view class="ratingbox">
+              <view class="text">服务</view>
+              <view class="stars">
+                <view wx:for="{{item.waiterstars}}" wx:key="" class="single" style='background:url("{{item.flag==1?bgImg:bgfImg}}") no-repeat center; background-size:50%;' data-index="{{index}}"></view>
+              </view>
+            </view>
+          </view>
+          <view class="commentDsc">
+            <view>{{item.commentContent}}</view>
+            <image mode="heightFix" src="{{item.commentPhoto}}" wx:if="{{item.commentPhoto!=''}}" />
+          </view>
+
+        </view>
+      </scroll-view>
+      <view class="toComment">
+        <!-- <i-icon class="toComment" type="add" size="80" color="black" /> -->
+        <mp-icon class="toComment" icon="add2" type="field" color="orange" size="{{80}}" bindtap='toComment'></mp-icon>
+      </view>
+    </swiper-item>
     <swiper-item>这里是还在建设中的商家信息界面</swiper-item>
     <swiper-item>这里是还在建设中的搜索结果界面</swiper-item>
   </swiper>

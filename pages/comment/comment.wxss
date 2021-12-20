@@ -1,0 +1,119 @@
+page {
+  background-color: #ffffff;
+}
+
+.whole {
+  width: 100%;
+  height: 750rpx;
+}
+
+.editcomment {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  padding: 10px auto;
+  background-color: #ffffff;
+  /* position: fixed; */
+  top: 7%;
+  margin: 50rpx;
+  margin-left: 5rpx;
+}
+
+.form {
+  width: 94%;
+  margin: 0 auto;
+}
+
+.input-style {
+  width: 70%;
+  height: 300rpx;
+  border-radius: 25px;
+  background: #f6fafa;
+  font-size: 14px;
+  /* text-indent: 15px; */
+  padding-left: 15px;
+  float: left;
+  color: #808286;
+}
+
+.btn {
+  width: 20%;
+  height: 70rpx;
+  font-size: 14px;
+  float: right;
+  border-radius: 10px;
+  color: #2c3036;
+  background: #f8c387;
+  letter-spacing: 2px;
+}
+
+.word {
+  width: 100%;
+  display: flex;
+}
+
+.imgbtn {
+  margin: 20rpx;
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.imgicon {
+  margin: 30rpx;
+  width: 30%;
+  background-color: #f8fcfc;
+}
+
+.deleteicon {
+  display: block;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+.imgshowing {
+  display: inline-block;
+  position: relative;
+}
+
+.rating {
+  background-color: #ffffff;
+  position: fixed;
+  width: 100%;
+  height: 30%;
+  bottom: 0%;
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+  align-items: center;
+  justify-content: center;
+}
+
+.ratingbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  font-size: 1em;
+  width: 38.2%;
+  text-align: center;
+
+}
+
+.stars {
+  width: 62.8%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 8rpx;
+}
+
+.single {
+  width: 100rpx;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+}

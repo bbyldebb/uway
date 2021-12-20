@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "mp-icon": "../../miniprogram_npm/weui-miniprogram/icon/icon"
+    "mp-icon": "../../miniprogram_npm/weui-miniprogram/icon/icon",
+    "i-icon": "../../dist/icon/index"
+
   },
   "style": "v2"
 }
