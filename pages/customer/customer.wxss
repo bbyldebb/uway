@@ -67,6 +67,7 @@ swiper {
   display: flex;
   flex-direction: column;
   height: 90%;
+  width: 100%;
 }
 
 .commentDetail {
@@ -90,8 +91,8 @@ swiper {
 }
 
 .customer-info image {
-  width: 20%;
-  height: 80%;
+  width: 15%;
+  height: 70%;
   margin-right: 20rpx;
   border-radius: 15rpx;
   top: 0%;
@@ -134,8 +135,6 @@ swiper {
 .ratingbox {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 
 .text {
@@ -156,8 +155,14 @@ swiper {
   height: 50rpx;
   display: flex;
   flex-direction: row;
-  width: 100%;
+  align-items: center;
 }
+
+.single>image {
+  width: 25rpx;
+  height: 25rpx;
+}
+
 
 .orderList {
   position: fixed;

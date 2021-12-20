@@ -12,8 +12,8 @@ Page({
     star_waiter: "",
     imgurl: "",
     input: "",
-    bgImg: "../../utils/dark.png",
-    bgfImg: "../../utils/bright.png",
+    bgImg: "../../static/img/dark.png",
+    bgfImg: "../../static/img/bright.png",
     dishstars: [{
         flag: 1,
       },
@@ -36,9 +36,9 @@ Page({
   onLoad: function (options) {
     this.setData({
       reststars: this.data.dishstars,
-      waiterstars: this.data.dishstars
+      waiterstars: this.data.dishstars,
+      referCustomer: options.referCustomer
     })
-
   },
   chooseImage() {
     let that = this
@@ -110,8 +110,6 @@ Page({
       commentContent: e.detail.value.input,
       CommentPhoto: this.data.imgurl,
       CommentTime: time,
-      referCustomer: "0448022461acb6a8009c098e6b7b379b",
-      referOrder: "83cfc1ac6198f6e70274ebfd720c81d0",
       imgurl: "",
       input: "",
     })
