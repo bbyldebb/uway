@@ -1,0 +1,59 @@
+.left {
+
+    /* background-color: aqua; */
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: 0px;
+    border-bottom: 0px;
+    /* background-color: rgb(156, 230, 87); */
+    /* background: linear-gradient(to right, rgba(163, 255, 180, 0.1) 0%, rgba(163, 255, 180, 0.1) 50%, rgba(163, 255, 180, 0.3) 50%, rgba(163, 255, 180, 0.3) 100%) */
+
+
+
+}
+
+.right {
+
+
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    /* border-style: solid; */
+    /* border-right-color: rgb(14, 11, 11); */
+}
+
+.whole {
+    display: flex;
+    flex-direction: row;
+}
+
+.canvas {
+    width: 100%;
+}
+
+.sold_message {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    background: white;
+    /* width: 61.8%; */
+    border-radius: 5rpx;
+    margin: 5%;
+    background: rgba(140, 192, 116, 0.5);
+    border: 1rpx solid #f2e6ce;
+}
+
+.sold_detail {
+    width: 100%;
+    display: flex;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 3%;
+    flex-direction: column;
+
+}

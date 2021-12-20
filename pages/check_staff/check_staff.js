@@ -101,8 +101,8 @@ Page({
             nbTitle: '员工管理',
             temp_type: options.type,
             type_: options.type,
-            nbFrontColor: '#ffffff',
-            nbBackgroundColor: '#000000',
+            nbFrontColor: '#000000',
+            nbBackgroundColor: '#BAC6AA',
         })
 
         //数据库获取数据
