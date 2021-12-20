@@ -1,0 +1,24 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/waiter/waiter",
+          "pathName": "pages/waiter/waiter",
+          "query": "staffID=3",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

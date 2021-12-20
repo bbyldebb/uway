@@ -55,12 +55,7 @@ Page(
 
                         run()
                         async function run() {
-
                             if (i < that.data.mysql1.length) {
-                                // console.log(i,that.data.mysql[i].PositionX,that.data.mysql1[i].PositionX)
-                                // console.log(i,that.data.mysql[i].PositionY,that.data.mysql1[i].PositionY)
-
-                                // if (that.data.mysql[i].PositionX != that.data.mysql1[i].PositionX || that.data.mysql[i].PositionY != that.data.mysql1[i].PositionY || i == that.data.mysql1.length - 1) {
                                 console.log("sdada", that.data.mysql1[i].ID)
                                 await wx.cloud.callFunction({
                                     name: 'AddTablePosition',
@@ -232,16 +227,19 @@ Page(
             var that = this;
             wx.getSystemInfo({
                 success: function (res) {
-                    console.log(res);
-                    // 屏幕宽度、高度
-                    console.log('height=' + res.windowHeight);
-                    console.log('width=' + res.windowWidth);
+                    // console.log(res);
+
+                    // // 屏幕宽度、高度
+                    // console.log('height=' + res.screenHeight);
+                    // console.log('width=' + res.screenWidth);
+                    let pr=res.pixelRatio
+                    console.log(pr)
                     // 高度,宽度 单位为px
                     that.setData({
                         windowHeight: res.windowHeight,
                         windowWidth: res.windowWidth,
-                        buttonLeft: res.windowWidth * 0.12,
-                        buttonTop: res.windowHeight * 0.06,
+                        buttonLeft: (res.windowWidth) * 0.13,
+                        buttonTop: (res.windowHeight) * 0.055,
                         temp: 1
                     })
                 }
@@ -312,14 +310,14 @@ Page(
                 var buttonTop = this.data.mysql1[i].PositionY + translateY
                 var buttonLeft = this.data.mysql1[i].PositionX + translateX
                 //判断是移动否超出屏幕
-                if (buttonLeft + 200 >= this.data.windowWidth * 0.76) {
-                    buttonLeft = this.data.windowWidth * 0.76 - 200;
+                if (buttonLeft +200>= that.data.windowWidth-that.data.buttonLeft*2) {
+                    buttonLeft = that.data.windowWidth-200-that.data.buttonLeft*2;
                 }
                 if (buttonLeft <= 0) {
                     buttonLeft = 0;
                 }
-                if (buttonTop <= 0) {
-                    buttonTop = 0
+                if (buttonTop <= 10) {
+                    buttonTop = 10
                 }
                 if (buttonTop + 150 >= this.data.windowHeight * 0.94) {
                     buttonTop = this.data.windowHeight * 0.94 - 150;
@@ -359,17 +357,15 @@ Page(
                         })
                         run()
                         async function run() {
-
                             if (i < that.data.mysql1.length) {
                                 var x = parseInt((i - 1) % 4)
                                 var y = parseInt((i - 1) / 4)
-                                console.log(x, y)
                                 await wx.cloud.callFunction({
                                     name: 'AddTablePosition',
                                     data: {
                                         id: that.data.mysql1[i].ID,
-                                        x: x * 200 + 20,
-                                        y: y * 200 + 20
+                                        x: x * 200 + 10,
+                                        y: y * 200 +10
                                     }
                                 }).then(res => {
 

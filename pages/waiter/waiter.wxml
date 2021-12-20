@@ -28,16 +28,10 @@
             </scroll-view>
         </view>
     </view>
-    <view class="rightInfo">
-        <!-- <view wx:for="{{mysql}}" wx:key="_id"> 
-            {{item.ID}}
-            
-
-        </view> -->
-        <!-- 让info从第二个开始遍历 -->
+    <dish-card show="{{showDishCard}}" id="dishcard" dishID="{{cardID}}"></dish-card>
+    <view class="rightInfo" wx:if="{{Rinfoall}}">
         <view class="index" wx:if="{{i>0}}" wx:for-index="i" wx:for="{{mysql}}" wx:key="_id">
-            <!-- item.PositionX+buttonLeft+200>=windowWidth -->
-            <view class="box2_view" wx:if="{{item.PositionX+buttonLeft+200>windowWidth}}" style="top:{{(item.PositionY)}}px;left:{{(item.PositionX+buttonLeft)*0.929}}px;position:fixed;">
+            <view class="box2_view" wx:if="{{item.PositionX+buttonLeft+200>windowWidth}}" style="top:{{(item.PositionY+10)}}px;left:{{(item.PositionX+buttonLeft)*0.929}}px;position:fixed;">
                 <view class="table_action_other">
                     <view wx:if="{{item.state=='1'&&id==item.ID&&info[item.ID].show_condition&&info[item.ID].available}}">
                         <button bindtap="onChangeAvailable" data-item="{{item.state}}" class="btn">
@@ -45,7 +39,7 @@
                         </button>
                     </view>
                     <view wx:if="{{item.state=='2'&&id==item.ID&&info[item.ID].show_condition&&!info[item.ID].available}}">
-                        <button class="btn">点餐</button>
+                        <button class="btn" bindtap="takeorder" data-item="{{item.ID}}">点餐</button>
                     </view>
                     <view wx:if="{{item.state=='2'&&id==item.ID&&info[item.ID].show_condition&&!info[item.ID].available}}">
                         <button bindtap="onChangeAvailable" data-item="{{item.state}}" class="btn">
@@ -63,7 +57,7 @@
                     {{item.ID}}号桌
                 </button>
             </view>
-            <view class="box2_view" wx:if="{{item.PositionX+buttonLeft+200<=windowWidth}}" style="top:{{(item.PositionY)}}px;left:{{(item.PositionX+buttonLeft)*1}}px;position:fixed;">
+            <view class="box2_view" wx:if="{{item.PositionX+buttonLeft+200<=windowWidth}}" style="top:{{(item.PositionY+10)}}px;left:{{(item.PositionX+buttonLeft)}}px;position:fixed;">
                 <button bindtap="onChangeShowState" data-item="{{item.ID}}" class="table" wx:if="{{item.state=='3'||item.state=='4'}}" disabled='disabled' style="background-color: #C0C0C0">
                     {{item.ID}}号桌
                 </button>
@@ -81,7 +75,7 @@
                         </button>
                     </view>
                     <view wx:if="{{item.state=='2'&&id==item.ID&&info[item.ID].show_condition&&!info[item.ID].available}}">
-                        <button class="btn">点餐</button>
+                        <button class="btn" bindtap="takeorder" data-item="{{item.ID}}">点餐</button>
                     </view>
                     <view wx:if="{{item.state=='2'&&id==item.ID&&info[item.ID].show_condition&&!info[item.ID].available}}">
                         <button bindtap="onChangeAvailable" data-item="{{item.state}}" class="btn">
@@ -95,7 +89,7 @@
             <view class="tip">
                 <view style="background-color: #CF9B69 ;height:20px; width:20px"></view>
                 <view>：清洁完毕，等待顾客</view>
-            </view >
+            </view>
             <view class="tip">
                 <view style="background-color: #C25939 ;height:20px ;width:20px"></view>
                 <view>：顾客正在用餐</view>
@@ -104,6 +98,115 @@
                 <view style="background-color: #C0C0C0 ;height:20px ;width:20px"></view>
                 <view>：待清洁</view>
             </view>
+        </view>
+    </view>
+    <view class="rightInfo1" wx:if="{{!Rinfoall}}">
+        <scroll-view scroll-y class="menuClass">
+            <view class="menuClassItem" wx:for="{{menuClass}}" data-name="{{item}}" bindtap="showExplicit" wx:key="_id">
+                {{item}}
+            </view>
+            <view style="height:100rpx;"></view>
+        </scroll-view>
+        <scroll-view scroll-y class="menuDetail">
+            <view class="listsimage" wx:for="{{menuDetail}}" wx:if="{{(item.class == curnav||curindex==0)&&(index%2==0||curindex==1)}}" wx:key="_id">
+                <view class="flex menuDetailItem" data-item="{{index}}" wx:if="{{menuDetail[index].class == curnav||curindex==0}}" bindtap="showDetail">
+                    <image style="height:90rpx;width:120rpx" src="{{menuDetail[index].image}}" />
+                    <view class="dishDsc">
+                        <view style="font-weight: 900;font-size: 15rpx;min-height: 30%;">
+                            {{menuDetail[index].name}}
+                        </view>
+                        <view style="min-height: 40%; font-size: 11rpx;color: rgb(105,105,105);">
+                            {{menuDetail[index].description}}
+                        </view>
+                        <view class="dscBottom flex main-axis-between" style="flex:1;" bindtap="AddorMinus">
+                            <view style="color: rgb(255,0,0,0.6);font-weight: 900;font-size: 10rpx;flex:1;">
+                                ￥{{menuDetail[index].price}}
+                            </view>
+                            <view class="dscBottomitem" wx:if="{{menuDetail[index].num==0}}">
+                                <image style="width:15rpx;height:15rpx;margin-left: 10rpx;margin-right: 15rpx;" src="../../static/img/add.png" data-index="{{index}}" bindtap="addDish" />
+                            </view>
+                            <view class="dscBottomitem" wx:if="{{menuDetail[index].num>0}}">
+                                <image style="width:15rpx;height:15rpx;margin-left: 15rpx;margin-right: 12rpx;" src="../../static/img/minus.png" data-index="{{index}}" bindtap="minusDish" />
+                                <view>{{menuDetail[index].num}}</view>
+                                <image style="width:15rpx;height:15rpx;margin-left: 10rpx;margin-right: 15rpx;" src="../../static/img/add.png" data-index="{{index}}" bindtap="addDish" />
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="flex menuDetailItem" data-item="{{index+1}}" wx:if="{{(menuDetail[index+1].class == curnav||curindex==0)&&curindex==0}}" bindtap="showDetail">
+                    <image style="height:90rpx;width:120rpx" src="{{menuDetail[index+1].image}}" />
+                    <view class="dishDsc">
+                        <view style="font-weight: 900;font-size: 15rpx;min-height: 30%;">
+                            {{menuDetail[index+1].name}}
+                        </view>
+                        <view style="min-height: 40%; font-size: 11rpx;color: rgb(105,105,105);">
+                            {{menuDetail[index+1].description}}
+                        </view>
+                        <view class="dscBottom flex main-axis-between" style="flex:1;" bindtap="AddorMinus">
+                            <view style="color: rgb(255,0,0,0.6);font-weight: 900;font-size: 10rpx;flex:1;">
+                                ￥{{menuDetail[index+1].price}}
+                            </view>
+                            <view class="dscBottomitem" wx:if="{{menuDetail[index+1].num==0}}">
+                                <image style="width:15rpx;height:15rpx;margin-left: 10rpx;margin-right: 15rpx;" src="../../static/img/add.png" data-index="{{index+1}}" bindtap="addDish" />
+                            </view>
+                            <view class="dscBottomitem" wx:if="{{menuDetail[index+1].num>0}}">
+                                <image style="width:15rpx;height:15rpx;margin-left: 15rpx;margin-right: 12rpx;" src="../../static/img/minus.png" data-index="{{index+1}}" bindtap="minusDish" />
+                                <view>{{menuDetail[index+1].num}}</view>
+                                <image style="width:15rpx;height:15rpx;margin-left: 10rpx;margin-right: 15rpx;" src="../../static/img/add.png" data-index="{{index+1}}" bindtap="addDish" />
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <!-- </view> -->
+            <view style="height:80rpx;"></view>
+        </scroll-view>
+        <view class="out" style="display:absolute;right:0rpx;z-index=-999">
+            <image style="width:30rpx;height:30rpx;" data-item="{{item.ID}}" src="../../static/img/cha.png" bindtap="outcha" />
+        </view>
+        <!-- 底部提交订单 -->
+        <view class="orderList flex" wx:if="{{totalMoney>0}}">
+            <view class="cartIcon" bindtap="showCart" style=" background-color: #ff9600;">
+                <image style="width:40rpx; height:40rpx; margin-top: 10rpx" src="../../static/img/order.png" />
+            </view>
+            <view class="totalMoney" bindtap="showCart">总计{{totalNum}}件，{{totalMoney}}💴</view>
+            <view class="confirmBtn" bindtap="submitOrder">立即支付</view>
+        </view>
+        <view class="orderList flex" wx:if="{{totalMoney<=0}}">
+            <view class="cartIcon" style="filter: grayscale(100%); background-color: #ff9600;">
+                <image style="width:40rpx; height:40rpx; margin-top: 10rpx" src="../../static/img/order.png" />
+            </view>
+            <view class="totalMoney">开始点餐</view>
+            <view class="confirmBtn">立即支付</view>
+        </view>
+        <!-- 蒙层背景 -->
+        <view class="maskBg" wx:if="{{showCart}}" bindtap="hideCart"></view>
+        <!-- 购物车列表 -->
+        <view class="cartList" wx:if="{{showCart}}">
+            <view class="cart-top">
+                <view bindtap="clearOrder">清空</view>
+                <view style="font-size: 20rpx">全部订单</view>
+                <view bindtap="hideCart">返回</view>
+            </view>
+            <scroll-view scroll-y class="cart-content" style="height:100%; margin-top:65rpx;overflow:auto;padding-bottom:20rpx;">
+                <view wx:for="{{orderDetail}}" wx:key="_id">
+                    <view class="order-item flex">
+                        <view class="flex" style="width:60%">
+                            <view>{{item.name}}</view>
+                            <view style="color:red;padding-left:20rpx;">{{item.price}}￥</view>
+                        </view>
+                        <view class="flex" style="width:30%;">
+                            <image style="width:20rpx;height:20rpx;" src="../../static/img/minus.png" data-index="{{index}}" bindtap="minusDishIn" />
+                            <view style="padding: 0 15rpx;">{{item.num}}</view>
+                            <image style="width:20rpx;height:20rpx;padding-right:25rpx;" src="../../static/img/add.png" data-index="{{index}}" bindtap="addDishIn" />
+                        </view>
+                        <view style="width:10%;">
+                            <mp-icon size="{{30}}" data-index="{{index}}" icon="close2" bindtap="deletDishIn" color="darkgray"></mp-icon>
+                        </view>
+                    </view>
+                </view>
+                <view style="height:75rpx;"></view>
+            </scroll-view>
         </view>
     </view>
 </view>

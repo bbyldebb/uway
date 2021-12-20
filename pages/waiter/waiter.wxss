@@ -59,12 +59,21 @@
     /* border-top-right-radius: 25rpx;
     border-bottom-right-radius: 25rpx; */
     /* padding-top: 15rpx; */
-    border-bottom: 1rpx solid rgba(146, 136, 136,0.3);
+    border-bottom: 1rpx solid rgba(146, 136, 136, 0.3);
     height: 50px;
     width: 100%;
     line-height: 50px;
     background-color: #BAC6AC;
     /* margin-top: 5px; */
+}
+
+
+.rightInfoOrder {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #FFFAF0;
 }
 
 .rightInfo {
@@ -80,23 +89,25 @@
     /*分开*/
     /* align-items: flex-end; */
     width: 70%;
-    background-color:#FFFAF0;
-     /* #FFFAF0; */
-     /* F4F5F0 */
+    background-color: #FFFAF0;
+    /* #FFFAF0; */
+    /* F4F5F0 */
 }
 
-.index{
-    height:90%;
+.index {
+    height: 90%;
 }
+
 .tips {
     width: 100%;
-    height:10%;
+    height: 10%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
 }
-.tip{
+
+.tip {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -131,6 +142,7 @@
     /* justify-content:space-around;
     align-items: ; */
 }
+
 .table_action_other {
     width: 35%;
     /* 调整按钮位置 */
@@ -158,17 +170,158 @@
     min-width: 40rpx;
 }
 
-/* .AddTable {
+
+.rightInfo1 {
+    height: 100%;
     display: flex;
-    width: 60rpx;
-    height: 60rpx;
-    padding: 0;
-    margin-left: 15%;
-    background-color: rgba(255, 255, 255, 0.1);
+    justify-content: start;
+    width: 70%;
+    background-color: #FFFAF0;
+
 }
 
-.AddImage {
+.menuClass {
+    border-radius: 5rpx;
+    width: 80px;
+    height: 100%;
+    background-color: rgb(192, 192, 192, 0.1);
+}
 
+.menuClassItem {
+    display: flex;
+    border-radius: 5rpx;
+    height: 15%;
     width: 100%;
-    height: 100%
-} */
+    align-items: center;
+    border-radius: 3rpx;
+    justify-content: center;
+    background-color: rgb(192, 192, 192, 0.1);
+    color: rgb(105, 105, 105);
+}
+
+.menuDetail {
+    width: 85%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.listsimage {
+    height: 18%;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: last baseline;
+}
+
+.menuDetailItem image {
+    width: 150rpx;
+    height: 120rpx;
+    border-radius: 9rpx;
+}
+
+
+.dishDsc {
+    width: 100rpx;
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    justify-content: space-around;
+    margin-left: 5px;
+}
+
+.dscBottom {
+    display: flex;
+    flex-direction: row;
+}
+
+.dscBottomitem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.orderList {
+    position: fixed;
+    bottom: 0rpx;
+    width: 69%;
+    height: 50rpx;
+    font-size: 10rpx;
+    background-color: rgb(254, 244, 209);
+}
+
+.cartIcon {
+    width: 60rpx;
+    height: 60rpx;
+    position: fixed;
+    bottom: 3rpx;
+    text-align: center;
+    border-radius: 50%;
+
+}
+
+.totalMoney {
+    flex: 1;
+    text-align: center;
+    font-size: 16rpx;
+}
+
+.confirmBtn {
+    display: flex;
+    height: 100%;
+    width: 20%;
+    border-radius: 25rpx;
+    align-items: center;
+    justify-content: center;
+    font-size: 16rpx;
+    color: white;
+    background-color: rgb(244, 201, 3, 0.6);
+}
+
+.maskBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.5;
+    background: black;
+    z-index: 100;
+}
+
+.cartList {
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 250rpx;
+    background: white;
+    z-index: 200;
+}
+
+.cart-top {
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;    display: flex;
+    justify-content: space-between;
+    background: orange;
+    height: 40rpx;
+    color: white;
+    font-weight: 500;
+    font-size: 18rpx;
+    padding: 5rpx 15rpx;
+    position: fixed;
+    left: 0;
+    right: 0;
+    align-items: center;
+}
+
+.order-item {
+    border-bottom: 1rpx solid rgb(128, 128, 128, 0.2);
+    padding: 5rpx 15rpx;
+    height: 50rpx;
+}
