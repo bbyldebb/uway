@@ -1,5 +1,4 @@
 /* customer.wxss */
-
 .searchbar {
   height: 7vh;
   background-color: rgb(192, 192, 192, 0.2);
@@ -68,6 +67,95 @@ swiper {
   display: flex;
   flex-direction: column;
   height: 90%;
+}
+
+.commentDetail {
+  width: 100%;
+  height: 100%;
+}
+
+.commentDetailItem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx;
+  margin-left: 30rpx;
+  margin-bottom: 200rpx;
+}
+
+.customer-info {
+  width: 100%;
+  height: 15%;
+  display: flex;
+}
+
+.customer-info image {
+  width: 20%;
+  height: 80%;
+  margin-right: 20rpx;
+  border-radius: 15rpx;
+  top: 0%;
+}
+
+.customer-info-word {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.commentDsc {
+  width: 100%;
+  margin-bottom: 20rpx;
+  padding: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.commentDsc view {
+  width: 100%;
+}
+
+.toComment {
+  position: fixed;
+  bottom: 5%;
+  right: 10%;
+  background: white;
+  border-radius: 50%;
+}
+
+.rating {
+  margin-top: 20rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30rpx;
+}
+
+.ratingbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  width: 25%;
+  font-size: 1em;
+}
+
+.stars {
+  width: 62.8%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rpx;
+}
+
+.single {
+  width: 50rpx;
+  height: 50rpx;
+  display: flex;
+  flex-direction: row;
   width: 100%;
 }
 

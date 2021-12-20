@@ -7,9 +7,9 @@
     "pages/check_dish/check_dish",
     "pages/analysis/analysis",
     "pages/cook/cook",
-    
     "pages/busboy/busboy",
     "pages/customer/customer",
+    "pages/comment/comment",
     "pages/waiter/waiter",
     "pages/staff/staff",
     "pages/layout/layout"

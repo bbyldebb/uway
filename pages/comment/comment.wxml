@@ -1,0 +1,38 @@
+<view class="whole">
+    <view class="editcomment">
+        <form bindsubmit="formSubmit" class='form'>
+            <view class="word">
+                <input value='{{input}}' name="input" type="text" placeholder='留下你精彩的评论吧' class="input-style" />
+                <button form-type="submit" class="btn">发送</button>
+            </view>
+            <!-- <button bindtap="chooseImage" class="imgbtn">选择图片</button> -->
+            <view class="imgicon">
+                <mp-icon wx:if="{{!imgshow}}" icon="album" bindtap="chooseImage" type="outline" size="{{100}}"></mp-icon>
+            </view>
+            <view class="imgshowing">
+                <image src="{{imgurl}}"></image>
+                <mp-icon icon="close2" wx:if="{{imgshow}}" color="gray" size="{{25}}" class="deleteicon" bindtap="deleteimg"></mp-icon>
+            </view>
+        </form>
+    </view>
+    <view class="rating">
+        <view class="ratingbox">
+            <view class="text">菜品评分</view>
+            <view class="stars">
+                <view wx:for="{{dishstars}}" wx:key="" class="single" style='background:url("{{item.flag==1?bgImg:bgfImg}}") no-repeat center; background-size:50%;' data-index="{{index}}" bindtap='score'></view>
+            </view>
+        </view>
+        <view class="ratingbox">
+            <view class="text">餐馆评分</view>
+            <view class="stars">
+                <view wx:for="{{reststars}}" wx:key="" class="single" style='background:url("{{item.flag==1?bgImg:bgfImg}}") no-repeat center; background-size:50%;' data-index="{{index}}" bindtap='score1'></view>
+            </view>
+        </view>
+        <view class="ratingbox">
+            <view class="text">服务评分</view>
+            <view class="stars">
+                <view wx:for="{{waiterstars}}" wx:key="" class="single" style='background:url("{{item.flag==1?bgImg:bgfImg}}") no-repeat center; background-size:50%;' data-index="{{index}}" bindtap='score2'></view>
+            </view>
+        </view>
+    </view>
+</view>
