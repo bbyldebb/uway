@@ -66,7 +66,8 @@ page {
     justify-content: center;
     align-items: center;
     font-size: 23rpx;
-    background-color: rgba(54, 54, 54, 0.918);
+    background-color: rgba(169, 212, 154, 0.918);
+    /* background-color:'#BAC6AE'; */
     color: white;
 }
 
@@ -78,7 +79,7 @@ page {
     justify-content: center;
     align-items: center;
     font-size: 23rpx;
-    background-color: rgba(3, 3, 3, 0.993);
+    background-color: rgba(245, 169, 126, 0.993);
     color: white;
 }
 .movable-area{
@@ -97,7 +98,7 @@ page {
     border-radius:50%;
     height: 50px;
     width: 50px;
-    background: rgb(184, 182, 182);
+    background: rgba(182, 238, 162, 0.7);
     /* border: 10px tomato; */
   }
 
@@ -108,7 +109,8 @@ page {
     top: 50%;
     width:25px;
     transform:translate(-50%, -50%);
-    border-top: 3px solid;
+    border-top: 4rpx solid;
+    border-color: #f7f7fa;
     /* background: rgb(68, 68, 68); */
     border-radius: 2px;
 }
@@ -120,7 +122,8 @@ page {
     top: 50%;
     height: 25px;
     transform: translate(-50%,-50%);
-    border-left: 3px solid;
+    border-left: 4rpx solid;
+    border-color: #fbfbfc;
     /* background: rgb(68, 68, 68); */
     border-radius: 2px;
 }
@@ -134,7 +137,7 @@ page {
     border-radius: 10rpx;  
     text-align: center;  
     margin: 40rpx 10%;  
-    background: #000;  
+    background: rgba(182, 238, 162, 0.7);  
     color: #fff;  
   }  
     
@@ -154,7 +157,7 @@ page {
   /*content*/  
   .drawer_box {  
     width: 60%;  
-    height: 80%;
+    /* height: 60%; */
     overflow: hidden;  
     position: fixed;  
     top: 0;  
@@ -167,7 +170,7 @@ page {
   }  
   .drawer_box2 {  
     width: 60%;  
-    height: 80%;
+    /* height: 60%; */
     overflow: hidden;  
     position: fixed;  
     top: 0;  
@@ -245,18 +248,18 @@ page {
   .fl { float: left;}  
   .fr { float: right;}
   .sub{
-      background: #000;
+      background: #3CC51F;
       color:#fff; 
       margin-top: 10rpx;
       width: 50%;
       display: inline-block;
-      margin-bottom: 50rpx;
+      /* margin-bottom: 10rpx; */
   }
   .cancel{
-    background: rgb(53, 52, 52);
+    background: rgba(182, 238, 162, 0.7);
     color:#fff; 
     width: 50%;
     display: inline-block;
     margin-top: 10rpx;
-    margin-bottom: 50rpx;
+    /* margin-bottom: 10rpx; */
 }

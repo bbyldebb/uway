@@ -15,8 +15,8 @@ Page({
         ID_: '',
         price_: '',
         type_: '',
-        desc_:'',
-        pic_:'',
+        desc_: '',
+        pic_: '',
         id_: '',
         temp_name: '',
         temp_type: '',
@@ -24,7 +24,7 @@ Page({
         temp_price: '',
         temp_pic: '',
         temp_desc: '',
-        no_pic:''
+        no_pic: ''
     },
 
 
@@ -38,9 +38,9 @@ Page({
                 ID: e.detail.value.temp_ID,
                 description: e.detail.value.temp_desc,
                 class: e.detail.value.temp_type,
-                image:e.detail.value.temp_pic,
-                price:e.detail.value.temp_price,
-                soleNum:'0'
+                image: e.detail.value.temp_pic,
+                price: e.detail.value.temp_price,
+                soldNum: 0
             }
         })
             .then(res => {
@@ -117,8 +117,9 @@ Page({
             nbTitle: '菜单管理',
             temp_type: options.type,
             type_: options.type,
-            nbFrontColor: '#ffffff',
-            nbBackgroundColor: '#000000',
+
+            nbFrontColor: '#000000',
+            nbBackgroundColor: '#BAC6AA',
         })
 
         //数据库获取数据
@@ -149,8 +150,8 @@ Page({
                     ID_: res.data.ID,
                     desc_: res.data.description,
                     type_: res.data.class,
-                    price_:res.data.price,
-                    pic_:res.data.image,
+                    price_: res.data.price,
+                    pic_: res.data.image,
                     id_: e.target.dataset.id
                 })
             })
@@ -167,8 +168,8 @@ Page({
                 ID: e.detail.value.temp_ID,
                 description: e.detail.value.temp_desc,
                 class: e.detail.value.temp_type,
-                image:e.detail.value.temp_pic,
-                price:e.detail.value.temp_price
+                image: e.detail.value.temp_pic,
+                price: e.detail.value.temp_price
             },
             success: function (res) {
                 that.onLoad({ type: e.detail.value.temp_type })
@@ -182,7 +183,6 @@ Page({
         db.collection('dish').doc(e.target.dataset.id)
             .get()
             .then(res => {
-                console.log("res:", res.data.class)
                 t = res.data.class
             })
 

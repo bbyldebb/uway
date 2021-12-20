@@ -1,4 +1,5 @@
 {
     "navigationBarTitleText": "查看员工",
-    "pageOrientation": "landscape"
+    "pageOrientation": "landscape",
+    "disableScroll":true
   }

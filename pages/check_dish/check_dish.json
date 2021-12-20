@@ -1,4 +1,5 @@
 {
     "navigationBarTitleText": "查看菜单",
-    "pageOrientation": "landscape"
+    "pageOrientation": "landscape",
+    "disableScroll":true
   }

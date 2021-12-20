@@ -1,7 +1,7 @@
 page {
     height: 100%;
     /* background: linear-gradient(to right, rgba(163, 255, 180, 0.1) 0%, rgba(163, 255, 180, 0.1) 50%, rgba(163, 255, 180, 0.3) 50%, rgba(163, 255, 180, 0.3) 100%) */
-        /* background:white */
+    /* background:white */
 
 }
 
@@ -45,7 +45,7 @@ page {
 }
 
 .takeit_message {
-    background: rgba(169, 166, 171, 0.2);
+    background: rgba(182, 238, 162, 0.7);
 }
 
 .staff_detail {
@@ -66,7 +66,7 @@ page {
     justify-content: center;
     align-items: center;
     font-size: 23rpx;
-    background-color: rgba(54, 54, 54, 0.918);
+    background-color: rgba(182, 238, 162, 0.7);
     color: white;
 }
 
@@ -78,11 +78,12 @@ page {
     justify-content: center;
     align-items: center;
     font-size: 23rpx;
-    background-color: rgba(3, 3, 3, 0.993);
+    background-color: rgba(245, 169, 126, 0.993);
     color: white;
 }
-.movable-area{
-    pointer-events:none;
+
+.movable-area {
+    pointer-events: none;
     z-index: 100;
     width: 100%;
     height: 100%;
@@ -91,24 +92,26 @@ page {
     left: 0;
     right: 0;
     bottom: 0;
-  }
-  .movable-view{ 
-  	pointer-events:auto;
-    border-radius:50%;
+}
+
+.movable-view {
+    pointer-events: auto;
+    border-radius: 50%;
     height: 50px;
     width: 50px;
-    background: rgb(184, 182, 182);
+    background: rgba(182, 238, 162, 0.7);
     /* border: 10px tomato; */
-  }
+}
 
-  .movable-view::before {
+.movable-view::before {
     content: '';
     position: absolute;
     left: 50%;
     top: 50%;
-    width:25px;
-    transform:translate(-50%, -50%);
-    border-top: 3px solid;
+    width: 25px;
+    transform: translate(-50%, -50%);
+    border-top: 4rpx solid;
+    border-color: #fbfbfc;
     /* background: rgb(68, 68, 68); */
     border-radius: 2px;
 }
@@ -119,148 +122,172 @@ page {
     left: 50%;
     top: 50%;
     height: 25px;
-    transform: translate(-50%,-50%);
-    border-left: 3px solid;
+    transform: translate(-50%, -50%);
+    border-left: 4rpx solid;
+    border-color: #fbfbfc;
     /* background: rgb(68, 68, 68); */
     border-radius: 2px;
 }
 
 
 
-/*button*/  
-.btn {  
-    width: 80%;  
-    padding: 20rpx 0;  
-    border-radius: 10rpx;  
-    text-align: center;  
-    margin: 40rpx 10%;  
-    background: #000;  
-    color: #fff;  
-  }  
-    
-  /*mask*/  
-  .drawer_screen {  
-    width: 100%;  
-    height: 100%;  
-    position: fixed;  
-    top: 0;  
-    left: 0;  
-    z-index: 1000;  
-    background: #000;  
-    opacity: 0.5;  
-    overflow: hidden;  
-  }  
-    
-  /*content*/  
-  .drawer_box {  
-    width: 60%;  
-    height: 80%;
-    overflow: hidden;  
-    position: fixed;  
-    top: 0;  
-    left: 0;  
-    z-index: 1001;  
-    background: #FAFAFA;  
-    margin: 5%;  
+/*button*/
+.btn {
+    width: 80%;
+    padding: 20rpx 0;
+    border-radius: 10rpx;
+    text-align: center;
+    margin: 40rpx 10%;
+    background: #000;
+    color: #fff;
+}
+
+/*mask*/
+.drawer_screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+}
+
+/*content*/
+.drawer_box {
+    width: 60%;
+    /* height: 80%; */
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    background: #FAFAFA;
+    margin: 5%;
     margin-left: 20%;
-    border-radius: 3px;  
-  }  
-  .drawer_box2 {  
-    width: 60%;  
-    height: 80%;
-    overflow: hidden;  
-    position: fixed;  
-    top: 0;  
-    left: 0;  
-    z-index: 1001;  
-    background: #FAFAFA;  
-    margin: 5%;  
+    border-radius: 3px;
+}
+
+.drawer_box2 {
+    width: 60%;
+    /* height: 80%; */
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    background: #FAFAFA;
+    margin: 5%;
     margin-left: 20%;
-    border-radius: 3px;  
-  } 
-    
-  .drawer_title{  
-    padding:15px;  
-    font: 20px "microsoft yahei";  
-    text-align: center;  
-  }  
-  .drawer_content {  
-    height: 210rpx;  
-    overflow-y: scroll; /*超出父盒子高度可滚动*/  
-  }  
-    
-  .btn_ok{  
-    padding: 10px;  
-    font: 20px "microsoft yahei";  
-    text-align: center;  
-    border-top: 1px solid #E8E8EA;  
-    color: #3CC51F;  
-  }  
-    
-  .top{  
-      padding-top:8px;  
-  }  
-  .bottom {  
-      padding-bottom:8px;  
-  }  
-  .title {  
-      height: 30px;  
-      line-height: 30px;  
-      width: 160rpx;  
-      text-align: center;  
-      display: inline-block;  
-      font: 300 28rpx/30px "microsoft yahei";  
-  }  
-    
-  .input_base {  
-      border: 2rpx solid #ccc;  
-      padding-left: 10rpx;  
-      margin-right: 50rpx;  
-  }  
-  .input_h30{  
-      height: 30px;  
-      line-height: 30px;  
-  }  
-  .input_h60{  
-      height: 60px;  
-  }  
-  .input_view{  
-      font: 12px "microsoft yahei";  
-      background: #fff;  
-      color:#000;  
-      line-height: 30px;  
-  }  
-    
-  input {  
-      font: 12px "microsoft yahei";  
-      background: #fff;  
-      color:#000 ;  
-  }  
-  radio{  
-      margin-right: 20px;  
-  }  
-  .grid { display: -webkit-box; display: box; }  
-  .col-0 {-webkit-box-flex:0;box-flex:0;}  
-  .col-1 {-webkit-box-flex:1;box-flex:1;}  
-  .fl { float: left;}  
-  .fr { float: right;}
-  .sub{
-      background: #000;
-      color:#fff; 
-      margin-top: 10rpx;
-      width: 50%;
-      display: inline-block;
-      margin-bottom: 50rpx;
-  }
-  .cancel{
-    background: rgb(53, 52, 52);
-    color:#fff; 
+    border-radius: 3px;
+}
+
+.drawer_title {
+    padding: 15px;
+    font: 20px "microsoft yahei";
+    text-align: center;
+}
+
+.drawer_content {
+    height: 210rpx;
+    overflow-y: scroll;
+    /*超出父盒子高度可滚动*/
+}
+
+.btn_ok {
+    padding: 10px;
+    font: 20px "microsoft yahei";
+    text-align: center;
+    border-top: 1px solid #E8E8EA;
+    color: #3CC51F;
+}
+
+.top {
+    padding-top: 8px;
+}
+
+.bottom {
+    padding-bottom: 8px;
+}
+
+.title {
+    height: 30px;
+    line-height: 30px;
+    width: 160rpx;
+    text-align: center;
+    display: inline-block;
+    font: 300 28rpx/30px "microsoft yahei";
+}
+
+.input_base {
+    border: 2rpx solid #ccc;
+    padding-left: 10rpx;
+    margin-right: 50rpx;
+}
+
+.input_h30 {
+    height: 30px;
+    line-height: 30px;
+}
+
+.input_h60 {
+    height: 60px;
+}
+
+.input_view {
+    font: 12px "microsoft yahei";
+    background: #fff;
+    color: #000;
+    line-height: 30px;
+}
+
+input {
+    font: 12px "microsoft yahei";
+    background: #fff;
+    color: #000;
+}
+
+radio {
+    margin-right: 20px;
+}
+
+.grid {
+    display: -webkit-box;
+    display: box;
+}
+
+.col-0 {
+    -webkit-box-flex: 0;
+    box-flex: 0;
+}
+
+.col-1 {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.sub {
+    background: #3CC51F;
+    color: #fff;
+    margin-top: 10rpx;
+    width: 50%;
+    display: inline-block;
+}
+
+.cancel {
+    background: rgba(182, 238, 162, 0.7);
+    color: #fff;
     width: 50%;
     display: inline-block;
     margin-top: 10rpx;
-    margin-bottom: 50rpx;
 }
-
-
-
-
