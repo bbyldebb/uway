@@ -7,8 +7,8 @@ Page({
     menuClass: [],
     menuDetail: [],
     comment: [],
-    bgImg: "../../utils/dark.png",
-    bgfImg: "../../utils/bright.png",
+    bgImg: "../../static/img/dark.png",
+    bgfImg: "../../static/img/bright.png",
     allstars: [],
     originstars: [{
         flag: 1,
@@ -36,10 +36,12 @@ Page({
     orderDetail: [],
     showCart: false,
     referTable: '',
+    referTableID: '',
     referCustomer: '',
     nickName: '',
     avatarUrl: '',
-    showTable: false
+    showTable: false,
+    submitORcall: 1,
   },
   onLoad(options) {
     var that = this
@@ -248,12 +250,26 @@ Page({
     }
   },
   toComment() {
+    this.setData({
+      submitORcall: 3
+    })
+    if (this.data.referCustomer == '') {
+      this.getCustomer();
+      return
+    }
     wx.navigateTo({
-      url: '/pages/comment/comment',
+      url: '/pages/comment/comment?referCustomer='+this.data.referCustomer,
     })
   },
   callWaiter() {
     var that = this
+    if(that.data.referTable == ''){
+      that.setData({
+        submitORcall: 2
+      });
+      that.getTable();
+      return
+    }
     const db = wx.cloud.database()
     const _ = db.command
     const $ = db.command.aggregate
@@ -265,7 +281,7 @@ Page({
           wx.cloud.callFunction({
             name: 'callWaiter',
             data: {
-              tableid: 1,
+              tableid: that.data.referTableID,
               callWaiter: '1'
             }
           }).then(res => {
@@ -344,6 +360,9 @@ Page({
     });
   },
   submitOrder() {
+    this.setData({
+      submitORcall: 1
+    })
     if (this.data.referCustomer == '') {
       this.getCustomer();
       return
@@ -461,9 +480,16 @@ Page({
                     duration: 500
                   });
                 }
-                setTimeout(function () {
-                  that.getTable()
-                }, 500)
+                if(that.data.submitORcall == 3) {
+                  setTimeout(function () {
+                    that.toComment()
+                  }, 500)
+                }
+                else if(that.data.submitORcall == 1){
+                  setTimeout(function () {
+                    that.getTable()
+                  }, 500)
+                }
               }
             });
           }
@@ -473,7 +499,8 @@ Page({
   },
   cancelTable() {
     this.setData({
-      showTable: false
+      showTable: false,
+      referTable: ''
     })
   },
   inputTable: function (e) {
@@ -493,9 +520,15 @@ Page({
           if (res.data.length != 0) {
             that.setData({
               referTable: res.data[0]._id,
+              referTableID: res.data[0].ID,
               showTable: false
             })
-            that.submitOrder()
+            if(that.data.submitORcall == 1) {
+              that.submitOrder()
+            }
+            else if(that.data.submitORcall == 2){
+              that.callWaiter()
+            }
           }
           //查找失败，即输入桌号不存在
           else {
@@ -519,8 +552,10 @@ Page({
     }
   },
   getTable() {
-    this.setData({
-      showTable: true
-    })
+    if(this.data.referTable == ''){
+      this.setData({
+        showTable: true
+      })
+    }
   }
 })

@@ -116,4 +116,10 @@ page {
   height: 100rpx;
   display: flex;
   flex-direction: row;
+  align-items: center;
+}
+
+.single>image {
+  width: 50rpx;
+  height: 50rpx;
 }

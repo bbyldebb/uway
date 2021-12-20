@@ -24,7 +24,7 @@
       </scroll-view>
       <scroll-view scroll-y class="menuDetail">
         <view class="flex menuDetailItem" wx:for="{{menuDetail}}" wx:if="{{item.class == curnav||curindex==0}}" bindtap="showDetail" data-index="{{index}}">
-          <image src="{{item.image}}" style="width:320rpx;height: 200rpx;" />
+          <image src="{{item.image}}" style="width:365rpx;height: 215rpx;" />
           <view class="dishDsc">
             <view style="font-weight: 900;font-size: 35rpx;min-height: 30%;">{{item.name}}</view>
             <view style="min-height: 30%; color: rgb(	105,105,105);">{{item.description}}</view>
@@ -91,20 +91,23 @@
           <view class="rating">
             <view class="ratingbox">
               <view class="text">菜品</view>
-              <view class="stars">
-                <view wx:for="{{item.dishstars}}" wx:key="" class="single" style='background:url("{{item.flag==1?bgImg:bgfImg}}") no-repeat center; background-size:50%;' data-index="{{index}}">{{item.dishstars}}</view>
+              <view class="stars" wx:for="{{item.dishstars}}" class="single" data-index="{{index}}">
+                <image src="{{bgImg}}" wx:if="{{item.flag==1}}"></image>
+                <image src="{{bgfImg}}" wx:if="{{item.flag==2}}"></image>
               </view>
             </view>
             <view class="ratingbox">
               <view class="text">餐馆</view>
-              <view class="stars">
-                <view wx:for="{{item.reststars}}" wx:key="" class="single" style='background:url("{{item.flag==1?bgImg:bgfImg}}") no-repeat center; background-size:50%;' data-index="{{index}}"></view>
+              <view class="stars" wx:for="{{item.reststars}}" class="single" data-index="{{index}}">
+                <image src="{{bgImg}}" wx:if="{{item.flag==1}}"></image>
+                <image src="{{bgfImg}}" wx:if="{{item.flag==2}}"></image>
               </view>
             </view>
             <view class="ratingbox">
               <view class="text">服务</view>
-              <view class="stars">
-                <view wx:for="{{item.waiterstars}}" wx:key="" class="single" style='background:url("{{item.flag==1?bgImg:bgfImg}}") no-repeat center; background-size:50%;' data-index="{{index}}"></view>
+              <view class="stars" wx:for="{{item.waiterstars}}" class="single" data-index="{{index}}">
+                <image src="{{bgImg}}" wx:if="{{item.flag==1}}"></image>
+                <image src="{{bgfImg}}" wx:if="{{item.flag==2}}"></image>
               </view>
             </view>
           </view>
@@ -112,7 +115,6 @@
             <view>{{item.commentContent}}</view>
             <image mode="heightFix" src="{{item.commentPhoto}}" wx:if="{{item.commentPhoto!=''}}" />
           </view>
-
         </view>
       </scroll-view>
       <view class="toComment">

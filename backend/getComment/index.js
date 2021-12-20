@@ -16,7 +16,7 @@ exports.main = async (event, context) => {
     })
     .lookup({
       from: 'customer',
-      foreignField: '_id',
+      foreignField: 'openId',
       localField: 'referCustomer',
       as: 'customer_info'
     }).replaceRoot({
