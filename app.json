@@ -1,12 +1,13 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/manager/manager",
     "pages/dish/dish",
     "pages/check_staff/check_staff",
     "pages/check_dish/check_dish",
     "pages/analysis/analysis",
     "pages/cook/cook",
-    "pages/index/index",
+    
     "pages/busboy/busboy",
     "pages/customer/customer",
     "pages/waiter/waiter",
