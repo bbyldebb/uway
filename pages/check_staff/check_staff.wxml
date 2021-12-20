@@ -1,0 +1,75 @@
+<page-meta>
+  <navigation-bar title="{{nbTitle}}" loading="{{nbLoading}}" front-color="{{nbFrontColor}}" background-color="{{nbBackgroundColor}}" color-animation-duration="2000" color-animation-timing-func="easeIn" />
+</page-meta>
+<view class="middle">
+  <scroll-view class="scroll" style="height: 90%;" scroll-y>
+    <view class="staff_list" wx:for="{{staff_message}}" wx:key="_id">
+      <view class="staff_message" bindtap="readText" data-name="{{item.name}}" data-ds="{{item.description}}">
+        <text class="staff_detail">姓名：{{item.name}}</text>
+        <text class="staff_detail">职位：{{item.type}}</text>
+        <text class="staff_detail">工号:{{item.ID}}</text>
+      </view>
+      <button class="edit" style="width:20%;" data-index="{{index}}" bindtap="editIt" data-id="{{item._id}}">
+        编辑
+      </button>
+      <button class="del" style="width:20%;" data-index="{{index}}" bindtap="deleteIt" data-id="{{item._id}}">
+        删除
+      </button>
+    </view>
+  </scroll-view>
+</view>
+<movable-area class="movable-area">
+  <movable-view class="movable-view" direction="all" bindtap="addit"></movable-view>
+</movable-area>
+<view class="drawer_box" wx:if="{{showModalStatus}}">
+  <!-- drawer content -->
+  <view class="drawer_title">弹窗标题</view>
+  <scroll-view class="scroll" style="height: 90%;" scroll-y>
+    <form class="drawer_content" bindsubmit='formSubmit'>
+      <view class="top grid">
+        <label class="title col-0">姓名：</label>
+        <input class="input_base input_h30 col-1" name="temp_name" cursor-spacing="200"></input>
+      </view>
+      <view class="top grid">
+        <label class="title col-0">职位：</label>
+        <input class="input_base input_h30 col-1" name="temp_position" value='{{type_}}' cursor-spacing="200"></input>
+      </view>
+      <view class="top grid">
+        <label class="title col-0">工号：</label>
+        <input class="input_base input_h30 col-1" name="temp_number" cursor-spacing="200"></input>
+      </view>
+      <view class="top grid">
+        <label class="title col-0">密码：</label>
+        <input class="input_base input_h30 col-1" name="temp_password" cursor-spacing="200"></input>
+      </view>
+      <button form-type='submit' class="sub" bindtap="sub">确定</button>
+      <button class="cancel" bindtap="cancel">取消</button>
+    </form>
+  </scroll-view>
+</view>
+<view class="drawer_box2" wx:if="{{showModalStatus2}}">
+  <!-- drawer content -->
+  <view class="drawer_title">弹窗标题2</view>
+  <scroll-view class="scroll" style="height: 90%;" scroll-y>
+    <form class="drawer_content" bindsubmit='formSubmit2'>
+      <view class="top grid">
+        <label class="title col-0">姓名：</label>
+        <input class="input_base input_h30 col-1" name="temp_name" value='{{name_}}' cursor-spacing="200"></input>
+      </view>
+      <view class="top grid">
+        <label class="title col-0">职位：</label>
+        <input class="input_base input_h30 col-1" name="temp_position" value='{{type_}}' cursor-spacing="200"></input>
+      </view>
+      <view class="top grid">
+        <label class="title col-0">工号：</label>
+        <input class="input_base input_h30 col-1" name="temp_number" value='{{ID_}}' cursor-spacing="200"></input>
+      </view>
+      <view class="top grid">
+        <label class="title col-0">密码：</label>
+        <input class="input_base input_h30 col-1" name="temp_password" value='{{pwd_}}' cursor-spacing="200"></input>
+      </view>
+      <button form-type='submit' class="sub" bindtap="sub2">确定</button>
+      <button class="cancel" bindtap="cancel2">取消</button>
+    </form>
+  </scroll-view>
+</view>

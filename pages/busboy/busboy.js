@@ -1,287 +1,278 @@
 
 
-Page({
-    data: {
-        info: [
-            {
-                id: 0,
-                judge: false,
-                show_condition: false,
-                available: true,
-                cust_hide: false,
-                cook_hide: false,
-                bkcolor: "background-color:#C25939",//#CF9B69
-            },
-            {
-                id: 1,
-                judge: false,
-                show_condition: false,
-                available: true,
-                cust_hide: false,
-                cook_hide: false,
-                bkcolor: "background-color:#C25939" //#CF9B69
-            },
-            {
-                id: 2,
-                judge: false,
-                show_condition: false,
-                available: true,
-                cust_hide: false,
-                cook_hide: false,
-                bkcolor: "background-color:#C25939" //#CF9B69
-            },
-            {
-                id: 3,
-                judge: false,
-                show_condition: false,
-                available: true,
-                cust_hide: false,
-                cook_hide: false,
-                bkcolor: "background-color:#C25939" //#CF9B69
-            },
-            {
-                id: 4,
-                judge: false,
-                show_condition: false,
-                available: true,
-                cust_hide: false,
-                cook_hide: false,
-                bkcolor: "background-color:#C25939" //#CF9B69
-            },
-            {
-                id: 5,
-                judge: false,
-                show_condition: false,
-                available: true,
-                cust_hide: false,
-                cook_hide: false,
-                bkcolor: "background-color:#C25939"//#CF9B69
-            },
-            {
-                id: 6,
-                judge: false,
-                show_condition: false,
-                available: true,
-                cust_hide: false,
-                cook_hide: false,
-                bkcolor: "background-color:#C25939" //#CF9B69
-            },
-            {
-                id: 7,
-                judge: false,
-                show_condition: false,
-                available: true,
-                cust_hide: false,
-                cook_hide: false,
-                bkcolor: "background-color:#C25939" //#CF9B69
-            },
-            {
-                id: 8,
-                judge: false,
-                show_condition: false,
-                available: true,
-                cust_hide: false,
-                cook_hide: false,
-                bkcolor: "background-color:#C25939" //#CF9B69
-            },
-            {
-                id: 9,
-                judge: false,
-                show_condition: false,
-                available: true,
-                cust_hide: false,
-                cook_hide: false,
-                bkcolor: "background-color:#C25939" //#CF9B69
-            },
+Page(
+    {
 
+        data: {
+            info: [
+                {
+                    // id: 0,
 
-        ],
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
+                },
+                {
+                    // id: 0,
 
-        CustNum: 9,
-        CookNum: 9,
-        id: 0,
-    },
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
 
-    onChangeShowState: function (e) {
-        var dataid = e.currentTarget.dataset.item;
-        var that = this;
-        const db = wx.cloud.database();
-        var temp = Number(dataid)
-        var aa;
-        var bb;
-        db.collection('table').where({ "ID": temp })
-            .get()
-            .then(res => {
-                aa = res.data[0].state//.state
-                console.log("aa:", aa)
-                if (aa > 2) {
-                    console.log(dataid);
-                    console.log(that.data.info[9].show_condition);
-                    that.data.info[dataid].show_condition = !that.data.info[dataid].show_condition;
-                    console.log(that.data.info[9].show_condition);
-                    if (aa == 3) {
-                        that.data.info[temp].available = true
-                    }
-                    else {
-                        that.data.info[temp].available = false
-                    }
-                    this.setData(
-                        {
-                            id: dataid,
-                            info: that.data.info
-                        }
-                    )
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
+                    // judge: false,
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
+                    // judge: false,
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
+                    // judge: false,
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
+                    // judge: false,
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
+                    // judge: false,
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
+                    // judge: false,
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
+                    // judge: false,
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
+                    // judge: false,
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
+                    // judge: false,
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
+                }, {
+                    // id: 0,
+                    // judge: false,
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
+                },
+                {
+                    // id: 0,
+                    // judge: false,
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
+                },
+                {
+                    // id: 0,
+                    // judge: false,
+                    show_condition: "",
+                    available: "",
+                    cust_hide: true,
+                    cook_hide: true,
                 }
+            ],
 
 
+            CustNum: 0,
+            CookNum: 0,
+            id: 0,
+            control: 0
+
+        },
+
+        async onLoad() {
+            var that = this;
+            wx.getSystemInfo({
+                success: function (res) {
+                    console.log(res);
+                    // 屏幕宽度、高度
+                    console.log('height=' + res.windowHeight);
+                    console.log('width=' + res.windowWidth);
+                    // 高度,宽度 单位为px
+                    that.setData({
+                        windowHeight: res.windowHeight,
+                        windowWidth: res.windowWidth,
+                        buttonLeft: res.windowWidth * 0.302,
+                        buttonTop: res.windowHeight * 0.1,
+                        control: 0
+                    })
+                }
             })
-            .catch(err => {
+            this.WatchTable()
+        },
+        onShow() {
 
-                console.log("fail!!!", dataid)
+            this.WatchOrder()
+            this.WatchCust()
+
+        },
+
+
+        //监听table变化
+        async WatchTable() {
+            var that = this
+            const db = wx.cloud.database()
+            const temp = db.collection('table').watch({
+                onChange: snapshot => {
+                    // console.log(snapshot.docs)
+                    that.setData({
+                        mysql: snapshot.docs,
+                    })
+                    that.refresh_right()//初始化info数组
+
+                    // console.log(that.data.mysql)
+                },
+                onError: function (err) {
+                    console.error("监听失败", err)
+                }
             })
-
-    },
-
-    onChangeAvailable: function (e) {
-
-        var temp = this.data.id;
-        var that = this;
-        var up = "info[" + temp + "].judge";
-        that.data.info[temp].show_condition = !that.data.info[temp].show_condition;
-        that.data.info[temp].available = !that.data.info[temp].available;
-        that.data.info[temp].judge = !that.data.info[temp].judge;
-        var aa;
-        var bb;
-        const db = wx.cloud.database()
-        db.collection('table').where({ "ID": temp })
-            .get()
-            .then(res => {
-                aa = res.data[0].state
-                console.log("aa:", aa)
-                if (aa == 3) {
-
-                    db.collection('table').where({ "ID": temp })
-                        .update({
-                            data: {
-                                state: "4"
-                            }
-                        })
-                        .then(res => {
-                            console.log("更新成功1" + temp)
-
-                        })
-                        .catch(err => {
-                            console.log("更新失败")
-                        })
-                    that.data.info[temp].bkcolor = "background-color:#FEEEBD";
+            // console.log("如那件", that.data.mysql)
+        },
+        //更新
+        refresh_right: function () {
+            var len = this.data.mysql.length
+            // console.log(len)
+            var that = this
+            for (var o in this.data.mysql) {
+                if (that.data.mysql[o].state == '')
+                    continue;
+                // console.log("id+state", that.data.mysql[o].ID, that.data.mysql[o].state)
+                var id = parseInt(that.data.mysql[o].ID)
+                if (that.data.mysql[o].state == "2") {
+                    that.data.info[id].show_condition = false;
+                    that.data.info[id].available = false;
                 }
                 else {
-
-                    db.collection('table').where({ "ID": temp })
-                        .update({
-                            data: {
-                                state: "1"
-                            }
-
-                        })
-                        .then(res => {
-                            console.log("更新成功2" + temp)
-                        })
-                        .catch(err => {
-                            console.log("更新失败")
-                        })
-                    that.data.info[temp].bkcolor = "background-color:#CF9B69";
+                    that.data.info[id].show_condition = false;
+                    that.data.info[id].available = true;
                 }
-                this.setData(
-                    {
-                        info: that.data.info
+                // console.log(that.data.mysql[o].ID,that.data.mysql[o].state)
+            }
+            this.setData(
+                {
+                    info: that.data.info,
+                    length: len
+                }
+            )
+        },
 
-                    }
-                )
+
+        onChangeShowState: function (e) {
+            var dataid = e.currentTarget.dataset.item;
+            // var up = "info[" + dataid + "].show_condition";
+            var that = this;
+
+
+            that.data.info[dataid].show_condition = !that.data.info[dataid].show_condition;
+            // console.log(that.data.info[9].show_condition);
+            this.setData(
+                {
+                    id: dataid,
+                    info: that.data.info
+                }
+            )
+
+        },
+
+        onChangeAvailable: function (e) {
+
+            var temp = this.data.id;
+            var that = this;
+            // var up = "info[" + temp + "].judge";
+            var dataid = e.currentTarget.dataset.item;
+            var title = "";
+            console.log(dataid)
+            if (dataid == '3') {
+                dataid = '4'
+                title = "开始清洁!"
+                wx.showLoading({
+                    title: '绑定中...'
+                })
+            }
+
+
+            else if (dataid == '4') {
+                dataid = '1'
+                title = "解绑成功!"
+                wx.showLoading({
+                    title: '解绑中...'
+                })
+            }
+
+            wx.cloud.callFunction({
+                name: 'SetTable',
+                data: {
+                    id: temp,
+                    state: dataid
+                }
+            }).then(res => {
+                wx.hideLoading();
+                console.log('云函数更新数据成功', res.result.data)
+                wx.showToast({
+                    title: title,
+                    icon: 'success',
+                    duration: 1500
+                })
             })
-            .catch(err => {
-
-                console.log("fail!!!")
-            })
-    },
-
-    refresh: function (j) {
-        const db = wx.cloud.database()
-        db.collection('table').where({ "ID": j })
-            .get()
-            .then(res => {
-                var that = this;
-                console.log("成功111", res.data[0].ID, ":", res.data[0].state)
-                if (res.data[0].state == "1") {
-                    var that = this;
-                    this.data.info[j].judge = false;
-
-                    this.data.info[j].bkcolor = "background-color:#CF9B69";
-                    console.log("!!", this.data.info[j])
-                    this.setData(
-                        {
-                            info: that.data.info
-                        }
-                    )
+                .catch(res => {
+                    console.log('云函数更新数据失败', res)
+                })
+            //数据库获取数据
+            that.data.info[temp].show_condition = !that.data.info[temp].show_condition;
+            that.data.info[temp].available = !that.data.info[temp].available;
+            // that.data.info[temp].judge = !that.data.info[temp].judge;
+            this.setData(
+                {
+                    // show_condition: (!that.data.show_condition),
+                    // available: (!that.data.available),
+                    info: that.data.info
+                    // available_color: "#C25939" 棕色
                 }
-                else if (res.data[0].state == "2") {
-                    this.data.info[j].judge = true;
-                    this.data.info[j].bkcolor = "background-color:#784D23";
-                    console.log("!!", this.data.info[j].judge)
-                    this.setData(
-                        {
-                            info: that.data.info
+            )
 
-                        }
-                    )
-                }
-                else if (res.data[0].state == "3") {
-                    this.data.info[j].judge = true;
-                    this.data.info[j].bkcolor = "background-color:#C25939";
-                    console.log("!!", this.data.info[j].judge)
-                    this.setData(
-                        {
-                            info: that.data.info
-                        }
-                    )
-                }
-                else if (res.data[0].state == "4") {
-                    this.data.info[j].judge = true;
-                    this.data.info[j].bkcolor = "background-color:#FEEEBD";
-                    console.log("!!", this.data.info[j].judge)
-                    this.setData(
-                        {
-                            info: that.data.info
-                        }
-                    )
-                }
-            })
-            .catch(err => {
-                console.log("失败")
-            })
-    },
-    myUpdate() {
-        setTimeout(this.myUpdate, 2000)
-        this.refresh(1)
-        this.refresh(2)
-        this.refresh(3)
-        this.refresh(4)
-        this.refresh(5)
-        this.refresh(6)
-        this.refresh(7)
-        this.refresh(8)
-        this.refresh(9)
-        console.log('轮询中...')
-    },
-    startWaiting() {
-        setTimeout(this.myUpdate, 2000)
-    },
-    onLoad: function () {
-
-        this.startWaiting()
-
-    },
-
-
-
-})
+        },
+    })

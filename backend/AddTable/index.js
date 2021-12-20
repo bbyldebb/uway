@@ -15,7 +15,10 @@ exports.main = async (event, context) => {
   return await db.collection('table').add({
     data:{
   ID:event.id,
-  state:"1"
+  state:"1",
+  PositionX:event.x,
+  PositionY:event.y,
+  callWaiter:'0'
     },
   })
 

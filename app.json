@@ -1,12 +1,18 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/manager/manager",
+    "pages/dish/dish",
+    "pages/check_staff/check_staff",
+    "pages/check_dish/check_dish",
+    "pages/analysis/analysis",
+    "pages/cook/cook",
+    "pages/busboy/busboy",
     "pages/customer/customer",
     "pages/comment/comment",
-    "pages/busboy/busboy",
     "pages/waiter/waiter",
-    "pages/manager/manager",
-    "pages/cook/cook"
+    "pages/staff/staff",
+    "pages/layout/layout"
   ],
   "window": {
     "backgroundTextStyle": "light",
