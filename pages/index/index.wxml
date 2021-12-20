@@ -6,9 +6,19 @@
     </swiper-item>
   </swiper>
   <text style="margin-top:30rpx; color:green; font-size:45rpx;">一键开启美味之旅·UWay有味</text>
-  <view class="login-choice flex flex-col">
-    <button bindtap="toCustomer" style="margin-top:15%;">我是餐厅的顾客</button>
-    <button bindtap="toStaff" style="margin-top:15%;">我是餐厅的员工</button>
+  <view class="" style="height:8vh; margin-top:110rpx;">
+    <view style="color:darkgray; font-size:35rpx; font-weight:700;">By UWay Coding小组!</view>
   </view>
+  <view class="login-choice flex">
+    <view style="width: 50%; height:100%;" class="flex flex-col" bindtap="toCustomer">
+      <image style="width:110rpx;height:120rpx;margin-top:84rpx;" src="../../static/img/customer.png" />
+      <text>我是餐厅顾客</text>
+    </view>
+    <view style="width: 50%; height:100%;" class="flex flex-col" bindtap="toStaff">
+      <image style="width:130rpx;height:130rpx;margin-top:75rpx;" src="../../static/img/worker.png" />
+      <text>我是餐厅员工</text>
+    </view>
+  </view>
+  <view style="height:8vh;"></view>
   <modalView show="{{showModal}}"></modalView>
 </view>

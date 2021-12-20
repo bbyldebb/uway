@@ -21,11 +21,12 @@ Component({
     dishDsc: "",
     dishPrice: ""
   },
-  //组件初始化渲染
-  pageLifetimes: {
-    show: function () {
-      console.log(this.properties.show)
-      console.log(this.properties.dishID)
+  ready: function () {
+    this.getDate();
+  },
+  //组件方法
+  methods: {
+    getDate() {
       var that = this;
       DISH.where({
         ID: that.data.dishID
@@ -41,14 +42,12 @@ Component({
         }
       })
     },
-  },
-  //组件方法
-  methods: {
     // 点击取消按钮的回调函数
     cancel() {
       this.setData({
         show: false
       })
+
     }
   }
 })

@@ -6,10 +6,12 @@
   margin: auto;
 }
 
-.searchbar input {
+.logo {
   height: 80%;
   width: 80%;
   margin-left: 15rpx;
+  margin-top: 25rpx;
+  color: gray;
 }
 
 .searchbar button {
@@ -41,6 +43,7 @@ swiper {
   margin-left: 10rpx;
   background-color: rgb(192, 192, 192, 0.1);
   color: rgb(105, 105, 105);
+  border: 0.1rpx solid rgb(148, 158, 148, 0.1);
 }
 
 .menuDetail {
@@ -50,6 +53,7 @@ swiper {
 
 .menuDetailItem {
   height: 22%;
+  border: 0.2rpx solid rgb(148, 158, 148, 0.1);
 }
 
 .menuDetailItem image {
