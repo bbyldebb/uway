@@ -1,8 +1,10 @@
 {
-    "usingComponents": {
-      "mp-navigation-bar": "../../miniprogram_npm/weui-miniprogram/navigation-bar/navigation-bar",
-      "mp-tabbar": "../../miniprogram_npm/weui-miniprogram/tabbar/tabbar"
-    },
-    "pageOrientation":"landscape" , 
-    "disableScroll":true
-  }
+  "usingComponents": {
+    "mp-navigation-bar": "../../miniprogram_npm/weui-miniprogram/navigation-bar/navigation-bar",
+    "mp-tabbar": "../../miniprogram_npm/weui-miniprogram/tabbar/tabbar",
+    "dish-card": "../../components/dish-card/dish-card",
+    "mp-icon": "../../miniprogram_npm/weui-miniprogram/icon/icon"
+  },
+  "pageOrientation": "landscape",
+  "disableScroll": true
+}
