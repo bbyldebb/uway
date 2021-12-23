@@ -1,0 +1,41 @@
+<view class="whole">
+    <view class="editcomment">
+        <form bindsubmit="formSubmit" class='form'>
+            <view class="word">
+                <input value='{{input}}' name="input" type="text" placeholder='留下你精彩的评论吧' class="input-style" />
+                <button form-type="submit" class="btn">发送</button>
+            </view>
+            <!-- <button bindtap="chooseImage" class="imgbtn">选择图片</button> -->
+            <view class="imgicon">
+                <mp-icon wx:if="{{!imgshow}}" icon="album" bindtap="chooseImage" type="outline" size="{{100}}"></mp-icon>
+            </view>
+            <view class="imgshowing">
+                <image src="{{imgurl}}"></image>
+                <mp-icon icon="close2" wx:if="{{imgshow}}" color="gray" size="{{25}}" class="deleteicon" bindtap="deleteimg"></mp-icon>
+            </view>
+        </form>
+    </view>
+    <view class="rating">
+        <view class="ratingbox">
+            <view class="text">菜品评分</view>
+            <view class="stars" wx:for="{{dishstars}}" class="single" bindtap='score' data-index="{{index}}">
+                <image src="{{bgImg}}" wx:if="{{item.flag==1}}"></image>
+                <image src="{{bgfImg}}" wx:if="{{item.flag==2}}"></image>
+            </view>
+        </view>
+        <view class="ratingbox">
+            <view class="text">餐馆评分</view>
+            <view class="stars" wx:for="{{reststars}}" class="single" bindtap='score1' data-index="{{index}}">
+                <image src="{{bgImg}}" wx:if="{{item.flag==1}}"></image>
+                <image src="{{bgfImg}}" wx:if="{{item.flag==2}}"></image>
+            </view>
+        </view>
+        <view class="ratingbox">
+            <view class="text">服务评分</view>
+            <view class="stars" wx:for="{{waiterstars}}" class="single" bindtap='score2' data-index="{{index}}">
+                <image src="{{bgImg}}" wx:if="{{item.flag==1}}"></image>
+                <image src="{{bgfImg}}" wx:if="{{item.flag==2}}"></image>
+            </view>
+        </view>
+    </view>
+</view>

@@ -8,41 +8,46 @@ Page({
         nbFrontColor: '#000000',
         nbBackgroundColor: '#ffffff',
         audiosrc: '',
-        staff_message: [],
+        dish_message: [],
         showModalStatus: false,
 
         name_: "try",
         ID_: '',
-        pwd_: '',
+        price_: '',
         type_: '',
+        desc_: '',
+        pic_: '',
         id_: '',
         temp_name: '',
-        temp_position: '',
-        temp_number: '',
-        temp_password: '',
         temp_type: '',
+        temp_ID: '',
+        temp_price: '',
+        temp_pic: '',
+        temp_desc: '',
+        no_pic: ''
     },
 
 
     formSubmit(e) {
-        console.log(e.detail.value)
-        console.log(e.detail.value.temp_name)
         var that = this;
         // const db = wx.cloud.database();
-        db.collection('staff').add({
+        db.collection('dish').add({
             // data 字段表示需新增的 JSON 数据
             data: {
                 name: e.detail.value.temp_name,
-                ID: e.detail.value.temp_number,
-                password: e.detail.value.temp_password,
-                type: e.detail.value.temp_position
+                ID: e.detail.value.temp_ID,
+                description: e.detail.value.temp_desc,
+                class: e.detail.value.temp_type,
+                image: e.detail.value.temp_pic,
+                price: e.detail.value.temp_price,
+                soldNum: 0
             }
         })
             .then(res => {
-                this.onLoad({ type: e.detail.value.temp_position })
+                this.onLoad({ type: e.detail.value.temp_type })
             })
             .catch(err => {
-                console.log("插入staff失败")
+                console.log("插入dish失败")
             })
     },
 
@@ -64,22 +69,34 @@ Page({
 
     },
 
-    checkCook: function (e) {
+    checkDesert: function (e) {
 
         this.setData({
-            temp_type: "cook"
+            temp_type: "甜品"
         })
     },
-    checkWaiter: function (e) {
+    checkFried: function (e) {
 
         this.setData({
-            temp_type: "waiter"
+            temp_type: "家常小炒"
         })
     },
-    checkBusboy: function (e) {
+    checkSoup: function (e) {
 
         this.setData({
-            temp_type: "busboy"
+            temp_type: "滋补靓汤"
+        })
+    },
+    checkSnake: function (e) {
+
+        this.setData({
+            temp_type: "夜宵"
+        })
+    },
+    checkSeafood: function (e) {
+
+        this.setData({
+            temp_type: "海鲜大餐"
         })
     },
     sub: function (e) {
@@ -96,23 +113,23 @@ Page({
     },
 
     onLoad(options) {
-        console.log("接受shoufengqin页面传递过来的参数：", options.type)
         this.setData({
-            nbTitle: '员工管理',
+            nbTitle: '菜单管理',
             temp_type: options.type,
             type_: options.type,
+
             nbFrontColor: '#000000',
             nbBackgroundColor: '#BAC6AA',
         })
 
         //数据库获取数据
         var that = this;
-        db.collection('staff').where({ "type": options.type })
+        db.collection('dish').where({ "class": options.type })
             .get()
             .then(res => {
                 this.setData(
                     {
-                        staff_message: res.data
+                        dish_message: res.data
                     }
                 )
             })
@@ -125,16 +142,16 @@ Page({
             showModalStatus2: true
         })
         var that = this
-        console.log('成功弹出编辑对话框', e.target.dataset.id)
-        db.collection('staff').doc(e.target.dataset.id)
+        db.collection('dish').doc(e.target.dataset.id)
             .get()
             .then(res => {
-                console.log("res:", res.data)
                 this.setData({
                     name_: res.data.name,
                     ID_: res.data.ID,
-                    pwd_: res.data.password,
-                    type_: res.data.type,
+                    desc_: res.data.description,
+                    type_: res.data.class,
+                    price_: res.data.price,
+                    pic_: res.data.image,
                     id_: e.target.dataset.id
                 })
             })
@@ -143,32 +160,30 @@ Page({
             })
     },
     formSubmit2(e) {
-        console.log(e.detail.value)
-        console.log(e.detail.value.temp_name)
+
         var that = this;
-        db.collection('staff').doc(that.data.id_).update({
+        db.collection('dish').doc(that.data.id_).update({
             data: {
                 name: e.detail.value.temp_name,
-                ID: e.detail.value.temp_number,
-                password: e.detail.value.temp_password,
-                type: e.detail.value.temp_position
+                ID: e.detail.value.temp_ID,
+                description: e.detail.value.temp_desc,
+                class: e.detail.value.temp_type,
+                image: e.detail.value.temp_pic,
+                price: e.detail.value.temp_price
             },
             success: function (res) {
-                that.onLoad({ type: e.detail.value.temp_position })
+                that.onLoad({ type: e.detail.value.temp_type })
             }
 
         })
     },
     deleteIt: function (e) {
-        console.log("准备删除", e)
-        console.log("准备删除", e.target.dataset.id)
         var t = ''
         var that = this
-        db.collection('staff').doc(e.target.dataset.id)
+        db.collection('dish').doc(e.target.dataset.id)
             .get()
             .then(res => {
-                console.log("res:", res.data.type)
-                t = res.data.type
+                t = res.data.class
             })
 
         wx.showModal({
@@ -176,7 +191,7 @@ Page({
             content: '是否确定删除？',
             success(res) {
                 if (res.confirm) {
-                    db.collection('staff').doc(e.target.dataset.id)
+                    db.collection('dish').doc(e.target.dataset.id)
                         .remove()
                         .then(res => {
                             that.onLoad({ type: t })

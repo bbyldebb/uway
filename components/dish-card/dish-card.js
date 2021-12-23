@@ -21,28 +21,6 @@ Component({
     dishDsc: "",
     dishPrice: ""
   },
-  //组件初始化渲染
-  // pageLifetimes: {
-  //   // show: function () {
-  //   //   console.log(this.properties.show)
-  //   //   console.log(this.properties.dishID)
-  //   //   var that = this;
-  //   //   DISH.where({
-  //   //     ID: that.data.dishID
-  //   //   }).watch({
-  //   //     success: function (res) {
-  //   //       that.setData({
-  //   //         dishName: res.data[0].name,
-  //   //         dishImg: res.data[0].image,
-  //   //         dishSold: res.data[0].soldNum,
-  //   //         dishDsc: res.data[0].description,
-  //   //         dishPrice: res.data[0].price
-  //   //       })
-  //   //     }
-  //   //   })
-  //   // },
-
-  // },
   ready: function () {
     this.getDate();
   },

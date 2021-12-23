@@ -1,0 +1,24 @@
+<page-meta>
+    <navigation-bar title="{{nbTitle}}" loading="{{nbLoading}}" front-color="{{nbFrontColor}}" background-color="{{nbBackgroundColor}}" color-animation-duration="2000" color-animation-timing-func="easeIn" />
+</page-meta>
+<view class="whole">
+    <view class="left">
+        <scroll-view class="scroll" style="height: 90%;" scroll-y>
+            <view class="sold_list" wx:for="{{sold_message}}" wx:key="_id">
+                <view class="sold_message" data-name="{{item.name}}" data-ds="{{item.description}}">
+                    <text class="sold_detail">{{item.name}}</text>
+                    <text class="sold_detail">卖出份数：{{item.soldNum}}</text>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="right">
+        <scroll-view class="scroll" style="height: 90%;" scroll-y>
+            <view class="sold_message">
+                <text class="sold_detail">近一周总流水：{{sum_7}}</text>
+                <text class="sold_detail">近一周流水变化柱状图：</text>
+            </view>
+            <canvas canvas-id="columnCanvas" disable-scroll="true" class="canvas"></canvas>
+        </scroll-view>
+    </view>
+</view>

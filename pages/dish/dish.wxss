@@ -9,7 +9,7 @@ page {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
     font-size: 20px;
 }
 

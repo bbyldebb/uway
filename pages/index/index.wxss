@@ -1,4 +1,9 @@
 /* index.wxss */
+.content {
+    background-image: url(https://uploadfile.bizhizu.cn/up/58/0a/12/580a12c58c8ae7e68e8381593972985f.jpg);
+    height: 100vh;
+}
+
 .rotation {
     width: 95vw;
     height: 28vh;
@@ -8,7 +13,7 @@
 .login-choice {
     margin-top: 50rpx;
     width: 95vw;
-    height: 45vh;
+    height: 25vh;
     background-color: rgba(169, 166, 171, 0.2);
     border-radius: 7rpx;
 }
