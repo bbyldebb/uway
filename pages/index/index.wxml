@@ -1,24 +1,29 @@
 <!-- index.wxml -->
-<view class="content flex flex-col main-axis-center">
-  <swiper class="rotation" indicator-dots="true" autoplay="true" interval="3000" duration="700">
-    <swiper-item wx:for="{{imgUrls}}">
-      <image src="{{item}}" style="width:100%; height:100%; object-fit:cover; border-radius:7rpx;" />
-    </swiper-item>
-  </swiper>
-  <text style="margin-top:30rpx; color:green; font-size:45rpx;">一键开启美味之旅·UWay有味</text>
-  <view class="" style="height:8vh; margin-top:110rpx;">
-    <view style="color:darkgray; font-size:35rpx; font-weight:700;">By UWay Coding小组!</view>
+<view class="content flex flex-col main-axis-center" style="">
+  <view style="top:0rpx;position:fixed;">
+    <swiper class="rotation" indicator-dots="true" autoplay="true" interval="3000" duration="700">
+      <swiper-item wx:for="{{imgUrls}}">
+        <image src="{{item}}" style="width:100%; height:100%; object-fit:cover; border-radius:7rpx;" />
+      </swiper-item>
+    </swiper>
   </view>
+  <text style="margin-top:30rpx; color:white; font-size:60rpx;font-weight:900">UWay</text>
+  <view style="background:white;height:7rpx;width:80%"></view>
+  <text style="color:white; font-size:30rpx;">一键开启美味之旅</text>
+  <!-- <view class="" style="height:8vh; margin-top:110rpx;">
+    <view style="color:darkgray; font-size:35rpx; font-weight:700;">By UWay Coding小组!</view>
+  </view> -->
   <view class="login-choice flex">
     <view style="width: 50%; height:100%;" class="flex flex-col" bindtap="toCustomer">
-      <image style="width:110rpx;height:120rpx;margin-top:84rpx;" src="../../static/img/customer.png" />
+      <image style="width:90rpx;height:90rpx;margin-top:70rpx;" src="../../static/img/customer.png" />
       <text>我是餐厅顾客</text>
     </view>
     <view style="width: 50%; height:100%;" class="flex flex-col" bindtap="toStaff">
-      <image style="width:130rpx;height:130rpx;margin-top:75rpx;" src="../../static/img/worker.png" />
+      <image style="width:90rpx;height:90rpx;margin-top:70rpx;" src="../../static/img/worker.png" />
       <text>我是餐厅员工</text>
     </view>
   </view>
+  <image class="image" src="cloud://uway-cloud-4gyzvl8k4c9543a5.7577-uway-cloud-4gyzvl8k4c9543a5-1308091667/img/pic2.png" />
   <view style="height:8vh;"></view>
   <modalView show="{{showModal}}"></modalView>
 </view>

@@ -3,4 +3,5 @@
     "modalView": "../../components/login-modal/login-modal"
   },
   "disableScroll": true
+
 }

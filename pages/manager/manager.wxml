@@ -24,21 +24,5 @@
                 <text>餐厅流水</text>
             </view>
         </navigator>
-        <navigator url="../cook/cook" class="each-box" hover-class="hover-color">
-            <view>
-                <mp-icon type="outline" icon="comment" color="black" size="{{60}}"></mp-icon>
-                <text>顾客评价</text>
-            </view>
-        </navigator>
-        <navigator url="../cook/cook" class="each-box" hover-class="hover-color">
-            <view>
-                <i-icon size="60" type="publishgoods_fill" />
-                <text>库房管理</text>
-            </view>
-        </navigator>
     </view>
 </view>
-
-
-
-
