@@ -1,7 +1,11 @@
 /* index.wxss */
 .content {
-    background-image: url(https://uploadfile.bizhizu.cn/up/58/0a/12/580a12c58c8ae7e68e8381593972985f.jpg);
+    /* background-image: url(https://7577-uway-cloud-4gyzvl8k4c9543a5-1308091667.tcb.qcloud.la/img/pic.png?sign=383030e0f1b89983cb9e9f57d2f1296d&t=1640856371); */
+    background-color: #FFE1A6;
+    background-size: 100%, 100%;
+    background-repeat: no-repeat;
     height: 100vh;
+    z-index: 100
 }
 
 .rotation {
@@ -10,10 +14,19 @@
     margin-top: 20rpx;
 }
 
+.image {
+    z-index: 200;
+    width: 100%;
+    height: 360rpx;
+    bottom: 30px;
+    position: fixed;
+}
+
 .login-choice {
-    margin-top: 50rpx;
+    z-index: 300;
+    margin-top: 30rpx;
     width: 95vw;
-    height: 25vh;
+    height: 17vh;
     background-color: rgba(169, 166, 171, 0.2);
     border-radius: 7rpx;
 }

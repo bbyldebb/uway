@@ -121,7 +121,7 @@
 }
 
 .table {
-    width: 150px;
+    width:65%;
     height: 120px;
     border-radius: 17%;
     /*圆角*/
@@ -208,7 +208,7 @@
 }
 
 .listsimage {
-    height: 18%;
+    height: 20%;
     width: 50%;
     display: flex;
     flex-direction: row;

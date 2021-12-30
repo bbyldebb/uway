@@ -424,7 +424,7 @@ Page(
                 var that = this
                 var length = this.data.mysql1.length
                 wx.showModal({
-                    title: '删除桌子',
+                    title: '删除后无法恢复哦!',
                     content: '确定删除第' + dataid + '桌？',
                     showCancel: true,//是否显示取消按钮      
                     cancelText: "取消",//默认是“取消”      

@@ -8,7 +8,7 @@
     <view>菜单</view>
     <view>评价</view>
     <view>商家</view>
-    <view>我的订单</view>
+    <view>关于我们</view>
     <view class="flex" bindtap="callWaiter">
       <view>👸呼叫</view>
       <mp-icon icon="bellring-on" size="25" color="rgb(0,128,0)"></mp-icon>
@@ -122,8 +122,17 @@
         <mp-icon class="toComment" icon="add2" type="field" color="orange" size="{{80}}" bindtap='toComment'></mp-icon>
       </view>
     </swiper-item>
-    <swiper-item>这里是还在建设中的商家信息界面</swiper-item>
-    <swiper-item>这里是还在建设中的搜索结果界面</swiper-item>
+    <swiper-item>
+  <image class="image" src="cloud://uway-cloud-4gyzvl8k4c9543a5.7577-uway-cloud-4gyzvl8k4c9543a5-1308091667/img/1.jpg" />
+    </swiper-item>
+    <swiper-item>
+      <view style="color:black; font-size:50rpx;font-weight:300">项目名称:</view>
+      <view class="ours">
+        <text style="color:black; font-size:35rpx;font-weight:900">\tUWay</text>
+      </view>
+      <view style="color:black; font-size:50rpx;font-weight:300">参与开发人员:</view>
+      <text class="ours" style="color:black; font-size:35rpx;font-weight:900">\t石彬鹏、韦诗睿、冯嘉怡、于川越、戚骏言</text>
+    </swiper-item>
   </swiper>
   <dish-card show="{{showDishCard}}" dishID="{{cardID}}" id="dishcard"></dish-card>
   <modal wx:if="{{showTable}}" title="请输入您的桌号" confirm-text="确定" cancel-text="取消" bindcancel="cancelTable" bindconfirm="confirmTable">
